@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2023_05_18_044156) do
     t.string "name", null: false
     t.text "detail", null: false
     t.integer "price", null: false
-    t.boolean "is_deleted", default: true, null: false
+    t.boolean "is_selling", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["genre_id"], name: "index_items_on_genre_id"
