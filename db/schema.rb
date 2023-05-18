@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2023_05_18_045741) do
     t.string "postcode", null: false
     t.text "address", null: false
     t.string "phone_number", null: false
-    t.boolean "is_deleted", null: false
+    t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(version: 2023_05_18_045741) do
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_shipping_addresses_on_customer_id"
   end
 
+  add_foreign_key "shipping_addresses", "customers"
 end
