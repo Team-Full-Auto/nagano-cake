@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="row">
+<%= form_with model: @order,  local: true do |f| %>
+<%= f.radio_buttan :address_number1%>
+<%= f.label :address_number1, "ご自身の住所" %>
+<% current_custamer.custommer_address %>
+<% %>
+</div>
+</div>
