@@ -1,6 +1,10 @@
 <div class="container">
   <div class="row">
 <%= form_with model: @order,  local: true do |f| %>
+<%= f.radio_buttan :pay_method_number1%>
+<%= f.label :pay_method_number1, "クレジットカード" %>
+<%= f.radio_buttan :pay_method_number2%>
+<%= f.label :address_number1, "銀行支払い" %>
 <%= f.radio_buttan :address_number1%>
 <%= f.label :address_number1, "ご自身の住所" %>
 <% current_custamer.custommer_address %>

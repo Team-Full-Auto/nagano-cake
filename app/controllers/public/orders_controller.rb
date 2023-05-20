@@ -2,6 +2,21 @@ class Public::OrdersController < ApplicationController
 def new
   @order =order.new
 end
+
+def index
+ 
+  @order = Order.new
+  @orders = current_customer.orders.latest
+end
+
+def show
+@order = current_customer.orders.find(params[:id])
+end
+def updte
+   @order.update(order_params)
+    redirect_to admin_order_path(@order), notice: 'Successfully updated order status'
+end
+
 def create
   cart_items = current_custamer.cart_item.all
   @order = current_custamer.orders.new(order_params)
@@ -20,7 +35,9 @@ def create
       @order = Order.new(order_params)
       render :new
   end
+
 end
+
 def confirm
  @order = Order.new(order_params)
     @address = Address.find(params[:order][:address_id])
@@ -28,7 +45,8 @@ def confirm
     @order.address = @address.address
     @order.name = @address.name
 end
-
+def complete
+end
 private
 def order_params
   params.require(:order).permit(:payment_method)
