@@ -4,7 +4,7 @@ def new
 end
 
 def index
- 
+
   @order = Order.new
   @orders = current_customer.orders.latest
 end
@@ -12,7 +12,7 @@ end
 def show
 @order = current_customer.orders.find(params[:id])
 end
-def updte
+def update
    @order.update(order_params)
     redirect_to admin_order_path(@order), notice: 'Successfully updated order status'
 end
