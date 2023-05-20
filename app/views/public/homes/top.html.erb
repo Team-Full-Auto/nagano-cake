@@ -1,1 +1,16 @@
-<h1>顧客ページ</h1>
+<%= render "layouts/header" %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
+      <p>
+        ようこそ、ながのCAKEへ！<br>
+        このサイトは、ケーキ販売のECサイトになります。<br>
+        会員でない方も商品の閲覧はできますが、<br>
+        購入には会員登録が必要になります。
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
