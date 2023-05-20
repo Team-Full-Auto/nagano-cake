@@ -1,0 +1,11 @@
+<% items.each do |item| %>
+  <div class="index-group">
+    <%= image_tag item.image %>
+  </div>
+  <div class="index-group">
+    <%= item.name %>
+  </div>
+  <div class="index-group">
+  ￥<%= item.price %>
+  </div>
+<% end %>
