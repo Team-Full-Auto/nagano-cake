@@ -1,0 +1,30 @@
+<div class="container px-5">
+  <div class="row">
+      <h2>商品詳細</h2>
+      <div class="col-md-4">
+          <%= image_tag @item.imge %>
+      </div>
+      <div class="col-md-8">
+        <div class="show-group">
+          <%= label :商品名%>
+          <%= @item.name %>
+        </div>
+        <div class="show-group">
+          <%= label :商品説明%>
+          <%= @item.detail %>
+        </div>
+        <div class="show-group">
+          <%= label :ジャンル%>
+          <%=%>
+        </div>
+        <div class="show-group">
+          <%= label :税込価格(税抜価格)%>
+          <%= (@item.price)　円 %>
+        </div>
+        <div class="show-group">
+          <%= label :ステータス%>
+          <%=%>
+        </div>  
+      </div>
+  </div>
+</div>
