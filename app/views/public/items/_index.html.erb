@@ -3,9 +3,9 @@
     <%= image_tag item.image %>
   </div>
   <div class="index-group">
-    <%= item.name %>
+    <%= link_to item.name, item_path(item)%>
   </div>
   <div class="index-group">
-  ￥<%= item.price %>
+  ￥<%= (item.price * 1.1).to_i %>
   </div>
 <% end %>
