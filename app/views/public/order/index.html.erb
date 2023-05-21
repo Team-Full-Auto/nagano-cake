@@ -9,10 +9,14 @@
      <td>
     <tr>
      <th> <span class="border-0">注文日</span></th>
-      <th> <span class="border-0">配送先</span></th>
-        <th> <span class="border-0">注文商品</span><th>
-          <th> <span class="border-0">支払金額</span></th>
-          <th> <span class="border-0">ステータス</span></th>
+      <th> <span class="border-0">配送先</span>
+      <%= @order.address %></th>
+        <th> <span class="border-0">注文商品</span>
+        </th>
+          <th> <span class="border-0">支払金額</span>
+          <%= @order.pay_method %></th>
+          <th> <span class="border-0">ステータス</span>
+           <%= @order.status %></th>
          <th> <span class="border-0">注文詳細</span></th>
            </tr>
            <tr>
