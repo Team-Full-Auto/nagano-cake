@@ -4,9 +4,24 @@
   <h2>注文情報</h2>
   <table>
     <tr>
-      <th><span class="border-0">注文日</span></th>
+    <tr><th><span class="border-0">注文日</span></th> 
+    </tr>
       
-      <th><span class="border-0"> 配送先</span></th>
+      <tr> <th><span class="border-0"> 配送先</span>
+      <%= @order.address %>
+      </th> 
+      
+      </tr>
+      
+       <tr> <th><span class="border-0"> 支払方法</span>
+       </th> 
+       </tr>
+       
+        <th><span class="border-0"> 入金確認</span>
+        </th>
+        
+       
+      
       
       
     </tr>
