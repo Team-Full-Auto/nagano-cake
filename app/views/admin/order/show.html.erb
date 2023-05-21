@@ -1,0 +1,10 @@
+<p>注文履歴詳細</p>
+
+<th> <span class="border-0">注文日</span></th>
+<th> <span class="border-0">配送先</span>
+      <%= @order.address %></th>
+      <th> <span class="border-0">支払金額</span>
+          <%= @order.pay_method %></th>
+          
+          <%= f.label :status, "注文ステータス" %>
+<% f.collection_select (:registered, current_customer.addresses.all, :id, :status %>
