@@ -13,6 +13,8 @@
 <% f.collection_select (:registered, current_customer.addresses.all, :id, :address %>
 <%= f.radio_buttan :address_number3%>
 <%= f.label :address_number3, "新しいお届け先" %>
+<%= f.label :postcode,"郵便番号"　%>
+<%= f.text_field :postcode %>
 <%= f.label :address,"住所"　%>
 <%= f.text_field :adress %>
 <%= f.lavel :address_name,"宛名"%>

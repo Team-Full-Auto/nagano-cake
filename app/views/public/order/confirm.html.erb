@@ -11,7 +11,7 @@
 <p>ご請求金額</p>
 <%= @total.to_s(:delimited) %> <!-- お買い物の合計金額 -->
 <p>支払方法</p>
-<%= @order.address %>
+<%= @order.pay_method %>
 <p>お届け先</p>
 <%= @order.address %>
 
