@@ -1,4 +1,51 @@
-<h3>
-  <%= @customer.family_name %>
-  <%= @customer.last_name %>さんの会員詳細
-</h3>
+<%= render "layouts/header" %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
+      <h3>
+        <%= @customer.family_name %>
+        <%= @customer.last_name %>さんの会員詳細
+      </h3>
+      <table class="table table-hover table-inverse">
+        <tr>
+          <th>会員ID</th>
+          <td><%= @customer.id %></td>
+        </tr>
+        <tr>
+          <th>氏名</th>
+          <td><%= @customer.family_name %><%= @customer.last_name %></td>
+        </tr>
+        <tr>
+          <th>フリガナ</th>
+          <td><%= @customer.family_name_kana %><%= @customer.last_name_kana %></td>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <td><%= @customer.postcode %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><%= @customer.address %></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td><%= @customer.phone_number %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= @customer.email %></td>
+        </tr>
+        <tr>
+          <th>会員ステータス</th>
+          <td>
+            <% if @customer.is_deleted? %>
+              <p>退会済み</p>
+            <% else %>
+              <p>有効</p>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
