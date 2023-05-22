@@ -13,6 +13,9 @@ class Public::CustomersController < ApplicationController
     redirect_to customer_path(customer.id)
   end
 
+  def check
+  end
+
   def withdrawal
     @customer = Customer.find(params[:id])
     #is_deletedカラムをtrueに変更することにより削除フラグを立てる

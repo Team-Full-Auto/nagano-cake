@@ -7,7 +7,7 @@
         <%= @customer.last_name %>さんの会員情報編集
       </h3>
       <table class="table table-hover table-inverse">
-        <%= form_with model: @customer, local:true do |f| %>
+        <%= form_with model: @customer,url: admin_customer_path(@customer.id),method: :patch, local:true do |f| %>
           <tr>
             <th><%= f.label :family_name, "氏名" %></th>
             <td><%= f.text_field :family_name %></td>
@@ -36,10 +36,17 @@
           </tr>
           <tr>
             <th><%= f.label :is_deleted, "会員ステータス" %></th>
-            <td></td>
+            <td>
+              <%= f.radio_button :is_deleted, false %>
+              <%= f.label :is_deleted, "有効" %>
+            </td>
+            <td>
+              <%= f.radio_button :is_deleted, true %>
+              <%= f.label :is_deleted, "退会" %>
+            </td>
           </tr>
           <tr>
-            <td><%= f.submit "変更を保存",class: 'btn btn-success' %></td>
+            <td><%= f.submit "変更を保存", class:'btn btn-success' %></td>
           </tr>
         <% end %>
       </table>
