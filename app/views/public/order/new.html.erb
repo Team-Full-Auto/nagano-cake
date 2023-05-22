@@ -14,9 +14,11 @@
 <%= f.radio_buttan :address_number1%>
 <%= f.label :address_number1, "ご自身の住所" %>
 <% current_custamer.custommer_address %>
+<br>
 <% f. radio_buttan :address_number2 %>
 <%= f.label :address_number2, "登録先の住所" %>
 <% f.collection_select (:registered, current_customer.addresses.all, :id, :address %>
+<br>
 <%= f.radio_buttan :address_number3%>
 <%= f.label :address_number3, "新しいお届け先" %>
 <%= f.label :postcode,"郵便番号"　%>
