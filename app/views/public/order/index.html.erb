@@ -1,15 +1,14 @@
 <%= render 'layout/header'%>
 <div class="container">
 <div class="row">
-  <span >
-  注文履歴一覧
-  </span>
+  <span >注文履歴一覧</span>
    <table>
      <tbody>
      <thead>
      <td>
     <tr>
      <th> <span class="border-0">注文日</span></th>
+     <th></th>
       <th> <span class="border-0">配送先</span>
       <%= @order.address %></th>
         <th> <span class="border-0">注文商品</span>
