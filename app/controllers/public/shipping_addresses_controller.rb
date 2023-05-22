@@ -1,4 +1,5 @@
 class Public::ShippingAddressesController < ApplicationController
+  
 def index
   @shipping_addresses = Shipping_addresses.all
   @customer = current_customer
@@ -26,6 +27,7 @@ end
 def update
   @shipping_address = shipping_address.find(params[:id])
    redirect_to shipping_addresses_path(@shipping_addresses.id)
+     flash[:notice]
 end
 def destroy
    shipping_address = shipping_address.find(params[:id])

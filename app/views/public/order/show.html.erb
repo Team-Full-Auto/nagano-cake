@@ -1,3 +1,4 @@
+<%= render 'layout/header'%>
 <div class="container">
 <div class="row">
   <p>注文履歴詳細</p>
@@ -5,20 +6,21 @@
   <table>
     <tr>
     <tr><th><span class="border-0">注文日</span></th> 
+    <th><%= @order.crate_at %></th>
     </tr>
       
-      <tr> <th><span class="border-0"> 配送先</span>
-      <%= @order.address %>
+      <tr> <th><span class="border-0"> 配送先</span></th>
+     <th> <%= @order.address %>
       </th> 
       
       </tr>
       
        <tr> <th><span class="border-0"> 支払方法</span>
-       </th> 
+       </th><th><%= @order.payment_method %></th> 
        </tr>
        
         <th><span class="border-0"> 入金確認</span>
-        </th>
+        </th><th></th>
         
        
       
