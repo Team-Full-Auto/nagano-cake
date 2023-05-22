@@ -1,6 +1,7 @@
 <%= render 'layout/header'%>
 <div class="container">
 <div class="row">
+  <div class="center-block">
 <%= form_with model:shipping_addresses,local:true do |f| %>
   <div class="form-group">
    <%= f.label :postcode,"郵便番号"　%>
@@ -18,6 +19,7 @@
     <%= f.submit "変更内容を保存する" %>
   </div>
 <% end %>
+</div>
 </div>
 </div>
 

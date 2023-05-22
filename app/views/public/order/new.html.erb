@@ -1,6 +1,7 @@
 <%= render 'layout/header'%>
 <div class="container">
   <div class="row">
+    <div class='mx-auto'>
       <h4>注文情報入力</h4>
  <%= form_with model: @order, url: "/orders/confirm", method: :post, local: true do |f| %>  
 <h5 class="font-weight-bold">支払い方法</h5>
@@ -28,7 +29,8 @@
 <%= f.text_field :adress %>
 <%= f.lavel :address_name,"宛名"%>
 <%= f.text_field :address_name %>
-<%= f.submit "確認画面へ進む" %>
+<%= f.submit  "確認画面へ進む",class: 'btn btn-success' %>
 <% end %>
+</div>
 </div>
 </div>
