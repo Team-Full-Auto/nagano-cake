@@ -1,3 +1,4 @@
+<%= render 'layout/header'%>
 <div class="container">
 <div class="row">
   <span >
@@ -12,6 +13,7 @@
       <th> <span class="border-0">配送先</span>
       <%= @order.address %></th>
         <th> <span class="border-0">注文商品</span>
+        <%= @order.item %>
         </th>
           <th> <span class="border-0">支払金額</span>
           <%= @order.pay_method %></th>

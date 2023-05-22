@@ -15,6 +15,7 @@ end
 def update
    @order.update(order_params)
     redirect_to admin_order_path(@order), notice: 'Successfully updated order status'
+     flash[:notice]
 end
 
 def create
