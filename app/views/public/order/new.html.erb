@@ -3,7 +3,7 @@
   <div class="row">
     <div class='mx-auto'>
       <h4>注文情報入力</h4>
- <%= form_with model: @order, url: "/orders/confirm", method: :post, local: true do |f| %>  
+ <%= form_with model: @order, url: "orders_confirm", method: :post, local: true do |f| %>  
 <h5 class="font-weight-bold">支払い方法</h5>
                 <p>
 <%= f.radio_buttan :pay_method_number1%>
