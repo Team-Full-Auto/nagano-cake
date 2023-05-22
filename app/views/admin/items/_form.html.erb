@@ -12,8 +12,18 @@
     <%= f.text_area :detail %>
   </div>
   <div class="form-group">
+    <%= f.label :ジャンル %>
+    <%= f.collection_select :genre_id, Genre.all, :id, :name, {prompt: "選択してください"} %>
+  </div>
+  <div class="form-group">
     <%= f.label :税抜価格 %>
     <%= f.number_field :price %>円
+  </div>
+  <div class="form-group">
+    <%= f.radio_button :is_selling, true %>
+    <%= f.label :is_selling, "販売中" %>
+    <%= f.radio_button :is_selling, false %>
+    <%= f.label :is_selling, "販売停止中" %>
   </div>
   <div class="form-group">
     <%= f.submit "新規登録", class: 'btn btn-success' %>
