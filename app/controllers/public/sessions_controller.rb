@@ -34,6 +34,7 @@ class Public::SessionsController < Devise::SessionsController
     return if !@customer
     #取得したアカウントのパスワードと入力されたパスワードが一致しているかを判別
     if @customer.valid_password?(params[:customer][:password]) && (@customer.is_deleted == false)
+      
     end
   end
 end

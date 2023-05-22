@@ -1,17 +1,38 @@
+<%= render "layouts/header" %>
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
       <h3>マイページ</h3>
       <h4>登録情報<%= link_to "編集する", edit_customer_path(@customer.id), class:"btn btn-success" %></h4>
-      <p>氏名<%= @customer.family_name %><%= @customer.last_name %></p>
-      <p>カナ<%= @customer.family_name_kana %><%= @customer.last_name_kana %></p>
-      <p>郵便番号<%= @customer.postcode %></p>
-      <p>住所<%= @customer.address %></p>
-      <p>電話番号<%= @customer.phone_number %></p>
-      <p>メールアドレス<%= @customer.email %></p>
+      <table class="table table-hover table-inverse">
+        <tr>
+          <th>氏名</th>
+          <td><%= @customer.family_name %><%= @customer.last_name %></td>
+        </tr>
+        <tr>
+          <th>カナ</th>
+          <td><%= @customer.family_name_kana %><%= @customer.last_name_kana %></td>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <td><%= @customer.postcode %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><%= @customer.address %></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td><%= @customer.phone_number %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= @customer.email %></td>
+        </tr>
+      </table>
 
-      <h4>配送先</h4>
-      <h4>注文履歴</h4>
+      <h4>配送先</h4><%= link_to "一覧を見る", shipping_addresses_path, class:"btn btn-primary" %>
+      <h4>注文履歴</h4><%= link_to "一覧を見る",  orders_path, class:"btn btn-primary" %>
     </div>
   </div>
 </div>
