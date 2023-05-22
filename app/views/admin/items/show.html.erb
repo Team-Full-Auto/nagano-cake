@@ -1,31 +1,32 @@
-<%= render 'layout/header'%>
+<%= render 'layouts/header'%>
 <div class="container px-5">
   <div class="row">
-      <h2>商品詳細</h2>
+      
       <div class="col-md-4">
-          <%= image_tag @item.imge %>
+        <h2>商品詳細</h2>
+        <%= image_tag @item.image %>
       </div>
       <div class="col-md-8">
         <div class="show-group">
-          <%= label :商品名%>
+          <span>商品名</span>
           <%= @item.name %>
         </div>
         <div class="show-group">
-          <%= label :商品説明%>
+          <span>商品詳細</span>
           <%= @item.detail %>
         </div>
         <div class="show-group">
-          <%= label :ジャンル%>
+          <span>ジャンル</span>
           <%=%>
         </div>
         <div class="show-group">
-          <%= label :税込価格(税抜価格)%>
-          <%= @item.price　円 %>
+          <span>税込価格</span>
+          <%= @item.price %>円
         </div>
         <div class="show-group">
-          <%= label :ステータス%>
+          <span>ステータス</span>
           <%=%>
-        </div>  
+        </div>
       </div>
   </div>
 </div>
