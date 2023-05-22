@@ -16,13 +16,8 @@ class Admin::GenresController < ApplicationController
 
   def update
     @genre = Genre.find(params[:id])
-    if @genre.update(genre_params)
-      redirect_to admin_genres_path
-      flash[:success] = "編集に成功しました"
-    else
-      flash[:danger] = "編集に失敗しました"
-      render :edit
-    end
+    @genre.update(genre_params)
+    redirect_to admin_genres_path
   end
 
   private
