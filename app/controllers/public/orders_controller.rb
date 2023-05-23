@@ -37,7 +37,6 @@ def create
       @order = Order.new(order_params)
       render :new
   end
-
 end
 
 def confirm
