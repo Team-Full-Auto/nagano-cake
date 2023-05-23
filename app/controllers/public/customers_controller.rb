@@ -10,8 +10,13 @@ class Public::CustomersController < ApplicationController
 
   def update
     customer = Customer.find(params[:id])
-    customer.update(customer_params)
-    redirect_to customer_path(customer.id)
+    if customer.update(customer_params)
+      flash[:notice] = "更新に成功しました"
+      redirect_to customer_path(customer.id)
+    else
+      flash[:notice] = "更新に失敗しました"
+      render :edit
+    end
   end
 
   def check
@@ -26,14 +31,14 @@ class Public::CustomersController < ApplicationController
   end
 
   private
-  
+
   def customer_params
     params.require(:customer).permit(:family_name,:last_name,:family_name_kana,:last_name_kana,:postcode,:address,:phone_number,:email)
   end
-  
+
   def is_matching_login_customer
     customer = Customer.find(params[:id])
-    unless customer.id == current_user.id
+    unless customer.id == current_customer.id
       redirect_to customer_path(customer.id)
     end
   end
