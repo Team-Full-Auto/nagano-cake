@@ -6,7 +6,7 @@ end
 
 def index
 
-  @order = Order.new
+  #@order = Order.new
   @orders = current_customer.orders
 end
 
