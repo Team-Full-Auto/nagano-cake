@@ -1,4 +1,5 @@
 class Public::CustomersController < ApplicationController
+  before_action :is_matching_login_customer, only: [:edit,:update]
   def show
     @customer = Customer.find(params[:id])
   end
@@ -25,7 +26,15 @@ class Public::CustomersController < ApplicationController
   end
 
   private
+  
   def customer_params
     params.require(:customer).permit(:family_name,:last_name,:family_name_kana,:last_name_kana,:postcode,:address,:phone_number,:email)
+  end
+  
+  def is_matching_login_customer
+    customer = Customer.find(params[:id])
+    unless customer.id == current_user.id
+      redirect_to customer_path(customer.id)
+    end
   end
 end
