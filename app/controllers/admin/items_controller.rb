@@ -1,4 +1,5 @@
 class Admin::ItemsController < ApplicationController
+  before_action :authenticate_admin!
   def new
     @form = Item.new
   end
@@ -9,14 +10,14 @@ class Admin::ItemsController < ApplicationController
     if params[:item][:name].present? && params[:item][:price].present? && params[:item][:detail].present? && params[:item][:genre_id].present? && params[:item][:image].present?
       if @form.save
         redirect_to admin_item_path(@form)
-        flash[:success] = "商品を登録しました"
+        flash[:notice] = "商品を登録しました"
       else
-        flash[:danger] = "必要情報を入力してください"
+        flash[:notice] = "必要情報を入力してください"
         render :new
       end 
     else
       unless @form.save
-        flash[:danger] = "必要情報を入力してください"
+        flash[:notice] = "必要情報を入力してください"
         render :new
       end 
     end
@@ -40,14 +41,14 @@ class Admin::ItemsController < ApplicationController
     if params[:item][:name].present? && params[:item][:price].present? && params[:item][:detail].present? && params[:item][:genre_id].present? && params[:item][:image].present?
       if @form.update
         redirect_to admin_item_path(@form)
-        flash[:success] = "商品を更新しました"
+        flash[:notice] = "商品を更新しました"
       else
-        flash[:danger] = "必要情報を入力してください"
+        flash[:notice] = "必要情報を入力してください"
         render :edit
       end 
     else
       unless @form.update(item_params)
-        flash[:danger] = "必要情報を入力してください"
+        flash[:notice] = "必要情報を入力してください"
         render :edit
       end 
     end
