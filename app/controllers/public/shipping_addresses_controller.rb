@@ -1,16 +1,17 @@
 class Public::ShippingAddressesController < ApplicationController
   
 def index
-  @shipping_addresses = Shipping_addresses.all
+  @shipping_addresses = current_customer.shipping_addresses.all
   @customer = current_customer
-   @shipping_address = shipping_address.new
+  @shipping_address = ShippingAddress.new
+ 
 end
 def edit
   @shipping_address = shipping_address.find(params[:id])
   if @customer = current_customer
      redirect_to shipping_address_path
   else
-       @shipping_addresses = Shipping_addresses.all
+       @shipping_addresses = shipping_addresses.all
        render "edit"
   end
 end

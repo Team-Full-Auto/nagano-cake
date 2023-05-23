@@ -1,17 +1,17 @@
-<%= render 'layout/header'%>
+
 <div class="container">
  <div class="row">
   <div class='mx-auto'>
   <span >注文履歴一覧</span>
    <table>
-     <tbody>
-     <thead>
+  
+     
      <td>
     <tr>
      <th> <span class="border-0">注文日</span></th>
-     <th></th>
+     <th><% link_to @order.purchase_date.strftime("%Y-%m-%d %H:%M"), order_path(order.id) %>　</th>
       <th> <span class="border-0">配送先</span>
-      <%= @order.address %></th>
+      <%= @order.shipping_address %></th>
         <th> <span class="border-0">注文商品</span>
         <%= @order.item %>
         </th>
@@ -22,9 +22,9 @@
          <th> <span class="border-0">注文詳細</span></th>
            </tr>
            <tr>
-             <td><% link_to(@order)do %></td>
+             
            </tr>
-    </tbody>
+   
 
   </table>
   </div>
