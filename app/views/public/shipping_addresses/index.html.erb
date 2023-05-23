@@ -1,10 +1,10 @@
 <%= render 'layout/header'%>
 <div class="container">
   <div class="row">
-    <div class='mx-auto'>
+    <div class="col-md-9 mx-auto">
     <p>配送先登録一覧</p>
     
-<%= form_with model: @order,  local: true do |f| %>
+<%= form_with model: @shippingsddress,  local: true do |f| %>
 <%= f.label :postcode,"郵便番号"　%>
 <%= f.text_field :postcode %>
 <%= f.label :address,"住所"　%>

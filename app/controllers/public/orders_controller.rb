@@ -1,13 +1,13 @@
 class Public::OrdersController < ApplicationController
 def new
-  @order =order.new
-   @addresses = current_customers.addresses.all
+  @order =Order.new
+   @addresses = current_customer
 end
 
 def index
 
   @order = Order.new
-  @orders = current_customer.orders.latest
+  @orders = current_customer.orders
 end
 
 def show
