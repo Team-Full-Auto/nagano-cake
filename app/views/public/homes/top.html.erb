@@ -1,8 +1,8 @@
 <%= render "layouts/header" %>
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
-      <p>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <p class="h5">
         ようこそ、ながのCAKEへ！<br>
         このサイトは、ケーキ販売のECサイトになります。<br>
         会員でない方も商品の閲覧はできますが、<br>
@@ -11,6 +11,3 @@
     </div>
   </div>
 </div>
-
-
-<%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
