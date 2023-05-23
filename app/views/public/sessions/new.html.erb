@@ -1,26 +1,29 @@
+<%= render "layouts/header" %>
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
-      <h3>ログイン</h3>
+      <div class="center-block">
+        <h3>ログイン</h3>
         <h4>会員の方はこちらからログイン</h4>
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="field">
-          <%= f.label :メールアドレス %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-        </div>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="form-group">
+            <%= f.label :password, "メールアドレス" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </div>
 
-        <div class="field">
-          <%= f.label :パスワード %>
-          <%= f.password_field :password, autocomplete: "current-password" %>
-        </div>
+          <div class="form-group">
+            <%= f.label :password, "パスワード" %>
+            <%= f.password_field :password, autocomplete: "current-password" %>
+          </div>
 
-        <div class="actions">
-          <%= f.submit "ログイン", class:"btn btn-primary" %>
-        </div>
-      <% end %>
+          <div class="form-group">
+            <%= f.submit "ログイン", class:"btn btn-primary" %>
+          </div>
+        <% end %>
 
       <h4>会員登録がお済みでない方</h4>
       <%= link_to "こちら", new_customer_registration_path %>から新規登録を行ってください
+      </div>
     </div>
   </div>
 </div>
