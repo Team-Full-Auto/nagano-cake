@@ -1,34 +1,38 @@
-<%= render 'layout/header'%>
+
 <div class="container">
   <div class="row">
     <div class='mx-auto'>
       <h4>注文情報入力</h4>
- <%= form_with model:form do |f| %>
+ <%= form_with model:@order  do |f| %>
 <h5 class="font-weight-bold">支払い方法</h5>
                 <p>
-<%= f.radio_buttan :pay_method_number1%>
+<%= f.radio_button :pay_method,"credit_card" %>
 <%= f.label :pay_method_number1, "クレジットカード" %>
 <br>
-<%= f.radio_buttan :pay_method_number2%>
+<%= f.radio_button :pay_method,"transfer"%>
 <%= f.label :pay_method_number2, "銀行支払い" %>
-
-<h5 class="font-weight-bold">お届け先</h5>
-<%= f.radio_buttan :address_number1%>
-<%= f.label :address_number1, "ご自身の住所" %>
-<% current_custamer.custommer_address %>
 <br>
-<% f. radio_buttan :address_number2 %>
+<h5 class="font-weight-bold">お届け先</h5>
+<%= f.radio_button :shipping_address_number,1%>
+<%= f.label :address_number1, "ご自身の住所" %>
+<% current_customer.address %>
+<br>
+<% f.radio_button :shipping_address_number,2 %>
 <%= f.label :address_number2, "登録先の住所" %>
-<% f.collection_select(:shipping_address_id,current_customer.ShippingAddress.all, :id, :address) %>
-
-<%= f.radio_buttan :address_number3%>
+<% f.collection_select(:shipping_address_id,current_customer.shipping_addresses, :id, :address) %>
+<br>
+<%= f.radio_button :shipping_address_number,3%>
 <%= f.label :address_number3, "新しいお届け先" %>
+<br>
 <%= f.label :郵便番号　%>
 <%= f.text_field :postcode %>
-<%= f.label :address,"住所"　%>
+<br>
+<%= f.label :住所　%>
 <%= f.text_field :adress %>
-<%= f.lavel :address_name,"宛名"%>
+<br>
+<%= f.label :address_name,"宛名"%>
 <%= f.text_field :address_name %>
+<br>
 <%= f.submit  "確認画面へ進む",class: 'btn btn-success' %>
 <% end %>
 </div>
