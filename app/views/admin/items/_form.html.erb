@@ -1,4 +1,14 @@
 <%= form_with(model: form, url: admin_items_path, method: :post) do |f| %>
+<!-- エラーメッセージ表示-->
+  <% if form.errors.any? %>
+    <h3><%= form.errors.count %>件のエラーが発生しました</h3><!--エラーメッセ-->
+    <ul>
+      <% form.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+<!-- エラーメッセージ表示-->
   <div class="form-group">
     <%= f.label :商品画像 %>
     <%= f.file_field :image, accept: "image/*" %>
