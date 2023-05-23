@@ -10,6 +10,8 @@ class Customer < ApplicationRecord
 
   validates :email, uniqueness: true
   validates :phone_number, uniqueness: true
+  validates :address, uniqueness: true
+  validates :postcode, uniqueness: true
 
   def active_for_authentication?
     super && (is_deleted == false)
