@@ -4,11 +4,7 @@
         payment_method: # カラム名（payment_methodカラムに対して）
           credit_card: "クレジットカード"
           transfer: "銀行振込"
-          
-          
-  ja:
-  enums:
-    order:
+
       order_status:
         waiting: "支払待ち"
         paid_up: "支払済み"
