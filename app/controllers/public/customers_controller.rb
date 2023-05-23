@@ -38,7 +38,7 @@ class Public::CustomersController < ApplicationController
 
   def is_matching_login_customer
     customer = Customer.find(params[:id])
-    unless customer.id == current_user.id
+    unless customer.id == current_customer.id
       redirect_to customer_path(customer.id)
     end
   end
