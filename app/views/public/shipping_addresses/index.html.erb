@@ -1,26 +1,29 @@
-<%= render 'layout/header'%>
+
 <div class="container">
   <div class="row">
-    <div class='mx-auto'>
+    <div class="col-md-9 mx-auto">
     <p>配送先登録一覧</p>
-    
-<%= form_with model: @order,  local: true do |f| %>
-<%= f.label :postcode,"郵便番号"　%>
+
+<%= form_with model: @shippingsddress,  local: true do |f| %>
+<%= f.label :郵便番号　%>
 <%= f.text_field :postcode %>
-<%= f.label :address,"住所"　%>
+<br>
+<%= f.label :住所　%>
 <%= f.text_field :adress %>
-<%= f.lavel :address_name,"宛名"%>
+<br>
+<%= f.label :address_name,"宛名"%>
 <%= f.text_field :address_name %>
-<%= f.submit "新規登録", %>
-<% end %>
+<br>
+<%= f.submit "新規登録" %>
+
 <table >
   <thead>
     <tbody>
-      <% books.each do |book| %>
-      <tr>
-        <td><%= link_to(shipping_addresses) do %></td>
 
-        
+      <tr>
+        <td><%= link_to(@shipping_address) do %></td>
+
+        <% end %>
       </tr>
     <% end %>
     </tbody>
