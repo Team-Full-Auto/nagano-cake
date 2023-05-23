@@ -13,7 +13,7 @@
 <% @current_items.each do|cart|%>
   <tr>
           <td>
-          <%= attachment_image_tag(cart_item.item, :image, size: "60x50", fallback: "no_image.jpg") %
+           <%= image_tag item.image %>
 <%= cart.item.name %>
 <% (cart.item.price).tos(:delimited) %>
 <%= cart.quantity %> <!-- 個数 -->

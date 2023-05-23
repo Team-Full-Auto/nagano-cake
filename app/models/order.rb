@@ -2,7 +2,7 @@ class Order < ApplicationRecord
   belongs_to :customer
   has_many :order_items, dependent: :destroy
   
-  config.time_zone = 'Asia/Tokyo'
+ 
 
   enum status: {
      "入金待ち":0,

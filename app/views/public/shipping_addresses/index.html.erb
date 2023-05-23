@@ -3,19 +3,24 @@
   <div class="row">
     <div class="col-md-9 mx-auto">
     <p>配送先登録一覧</p>
-
+<table class="table table-hover table-inverse">
 <%= form_with model: @shippingsddress,  local: true do |f| %>
-<%= f.label :郵便番号　%>
-<%= f.text_field :postcode %>
-<br>
-<%= f.label :住所　%>
-<%= f.text_field :adress %>
-<br>
-<%= f.label :address_name,"宛名"%>
-<%= f.text_field :address_name %>
-<br>
-<%= f.submit "新規登録" %>
+<tr>
+<th><%= f.label :post_code,"郵便番号"%></th>
+<td><%= f.text_field :post_code %></td>
+</tr>
+<tr>
+<th><%= f.label :address,"住所" %></th>
+<td><%= f.text_field :address %></td>
+</tr>
+<tr>
+<th><%= f.label :address_name,"宛名"%></th>
+<td><%= f.text_field :address_name %></td>
+</tr>
+<tr>
 
+<td><%= f.submit "新規登録" %></td>
+</tr>
 <table >
   <thead>
     <tbody>
