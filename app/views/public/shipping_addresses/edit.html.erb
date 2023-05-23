@@ -1,15 +1,15 @@
-<%= render 'layout/header'%>
+
 <div class="container">
 <div class="row">
   <div class="center-block">
 <%= form_with model:shipping_addresses,local:true do |f| %>
   <div class="form-group">
-   <%= f.label :郵便番号　%>
+   <%= f.label :postcode,"郵便番号"　%>
     <%= f.text_field :postcode  %>
   </div>
   <div class="form-group">
-   <%= f.label :住所　%>
-    <%= f.text_field :adress %>
+   <%= f.label :address,"住所"　%>
+    <%= f.text_field :address %>
   </div>
   <div class="form-group">
   <%= f.lavel :address_name,"宛名"%>

@@ -18,7 +18,4 @@
           in_production: "製作中"
           production_complete: "製作完了"
         
-  time:
-    formats:
-      default: "%Y/%m/%d %H:%M:%S"
-      short: "%m/%d %H:%M"
+ 
