@@ -1,38 +1,48 @@
-
+<%= render "homes/header" %>
 <div class="container">
   <div class="row">
     <div class='mx-auto'>
       <h4>注文情報入力</h4>
+<table class="table table-hover table-inverse">
  <%= form_with model:@order  do |f| %>
+ <tr>
 <h5 class="font-weight-bold">支払い方法</h5>
-                <p>
-<%= f.radio_button :pay_method,"credit_card" %>
-<%= f.label :pay_method_number1, "クレジットカード" %>
-<br>
-<%= f.radio_button :pay_method,"transfer"%>
-<%= f.label :pay_method_number2, "銀行支払い" %>
-<br>
+                <tr>
+<th><%= f.radio_button :pay_method,"credit_card" %></th>
+<td><%= f.label :pay_method_number1, "クレジットカード" %></td>
+</tr>
+<tr>
+<th><%= f.radio_button :pay_method,"transfer"%></th>
+<td><%= f.label :pay_method_number2, "銀行支払い" %></td>
+</tr>
+<tr>
 <h5 class="font-weight-bold">お届け先</h5>
-<%= f.radio_button :shipping_address_number,1%>
+<th><%= f.radio_button :shipping_address_number,1%></th>
 <%= f.label :address_number1, "ご自身の住所" %>
 <% current_customer.address %>
-<br>
-<% f.radio_button :shipping_address_number,2 %>
+</tr>
+<tr>
+<td><% f.radio_button :shipping_address_number,2 %>
 <%= f.label :address_number2, "登録先の住所" %>
 <% f.collection_select(:shipping_address_id,current_customer.shipping_addresses, :id, :address) %>
-<br>
+</td>
+</tr>
+<tr>
 <%= f.radio_button :shipping_address_number,3%>
 <%= f.label :address_number3, "新しいお届け先" %>
-<br>
-<%= f.label :郵便番号　%>
+</tr>
+<tr>
+<%= f.label :postcode,"郵便番号" %>
 <%= f.text_field :postcode %>
-<br>
-<%= f.label :住所　%>
-<%= f.text_field :adress %>
-<br>
+</tr>
+<tr>
+<%= f.label :address,"住所"%>
+<%= f.text_field :address %>
+</tr>
+<tr>
 <%= f.label :address_name,"宛名"%>
 <%= f.text_field :address_name %>
-<br>
+</tr>
 <%= f.submit  "確認画面へ進む",class: 'btn btn-success' %>
 <% end %>
 </div>

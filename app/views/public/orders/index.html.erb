@@ -4,27 +4,27 @@
   <div class='mx-auto'>
   <span >注文履歴一覧</span>
    <table>
-  
-     
+
+
      <td>
     <tr>
      <th> <span class="border-0">注文日</span></th>
-     <th><% link_to @order.purchase_date.strftime("%Y-%m-%d %H:%M"), order_path(order.id) %>　</th>
+     <td><%= @orders.created_at.strftime('%Y/%m/%d') %>　</td>
       <th> <span class="border-0">配送先</span>
       <%= @order.shipping_address %></th>
-        <th> <span class="border-0">注文商品</span>
-        <%= @order.item %>
-        </th>
-          <th> <span class="border-0">支払金額</span>
-          <%= @order.pay_method %></th>
-          <th> <span class="border-0">ステータス</span>
-           <%= @order.status %></th>
+        <th> <span class="border-0">注文商品</span></th>
+       <td> <%= @order.item %></td>
+
+          <th> <span class="border-0">支払金額</span></th>
+          <td><%= @order.pay_method %></td>
+          <th> <span class="border-0">ステータス</span></th>
+          <td> <%= @order.status %></td>
          <th> <span class="border-0">注文詳細</span></th>
            </tr>
            <tr>
-             
+
            </tr>
-   
+
 
   </table>
   </div>
