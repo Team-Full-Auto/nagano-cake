@@ -1,9 +1,7 @@
-<%= render "layouts/header" %>
-<div class="container px-5">
-  <div class="row">
-    <div class="col-md-9 mx-auto">
-      <h2>商品一覧</h2>
+<%= render "layouts/header", customer: @customer %>
+<div class="container px-5 ">
+  <h2>商品一覧</h2>
+  <div class="row mx-auto">
       <%= render 'index', items: @items %>
-    </div>
   </div>
 </div>
