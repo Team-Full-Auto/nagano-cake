@@ -1,4 +1,4 @@
-<%= render "layouts/header" %>
+<%= render "layouts/header", customer: @customer %>
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
@@ -10,4 +10,25 @@
       </p>
     </div>
   </div>
+  <h2>新着商品</h2>
+  <div class="row">
+    <% @top_items.each do |item| %>
+      <div class="col">
+        <div>
+          <%= link_to item_path(item.id) do %>
+            <%= image_tag item.image, size: "160x200" %>
+          <% end %>
+        </div>
+        <div>
+          <%= link_to item_path(item.id) do %>
+            <%= item.name %>
+          <% end %>
+        </div>
+        <div>
+          ￥<%= item.price %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <p><%= link_to "すべての商品を見る>", items_path %></p>
 </div>
