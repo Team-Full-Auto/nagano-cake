@@ -15,16 +15,16 @@
           <%= f.label :status, "注文ステータス" %>
 <% f.collection_select (:order_id, current_customer.addresses, :status) %>
 
-<% @orders.each do |order| %>
+
 <th> <span class="border-0">商品名</span></th>
 <th><span class="border-0">単価</span></th>
 <th><span class="border-0">数量</span></th>
 <th><span class="border-0">小計</span></th>
 <th><span class="border-0">制作ステータス</span></th>
-
-<td><th><span class="border-0"><%= order_item.name %></span></th>　</td>
+<% @orders.each do |order| %>
+<td><th><span class="border-0"><%= @item.name %></span></th>　</td>
 <th> <span class="border-0"><%= f.hidden_field :total_price, value: @total %></th>
-<th> <span class="border-0"><%= cart.quantity %> </th>
+<th> <span class="border-0"><%= @cart_item.quantity %> </th>
 <th> <span class="border-0">(cart.item.price*cart.quantity).to_s(:delimited) %> <!></th>}
 <% f.collection_select(:orders_id,current_customer.shipping_addresses, :id, :create_status) %>
 </div>

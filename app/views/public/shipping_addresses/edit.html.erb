@@ -1,19 +1,19 @@
-<%= render "layouts/header" %>
+<%= render "layouts/header",customer: current_customer %>
 <div class="container">
 <div class="row">
   <div class="center-block">
-<%= form_with model:shipping_addresses,local:true do |f| %>
+<%= form_with model: @shipping_address, local: true do |f| %>
   <div class="form-group">
-   <%= f.label :postcode,"郵便番号"　%>
+   <%= f.label :postcode,"郵便番号" %>
     <%= f.text_field :postcode  %>
   </div>
   <div class="form-group">
-   <%= f.label :address,"住所"　%>
+   <%= f.label :address,"住所" %>
     <%= f.text_field :address %>
   </div>
   <div class="form-group">
-  <%= f.lavel :address_name,"宛名"%>
-<%= f.text_field :address_name %>
+  <%= f.label :name,"宛名"%>
+<%= f.text_field :name %>
 </div>
   <div class="form-group">
     <%= f.submit "変更内容を保存する" ,class: "btn-success"%>

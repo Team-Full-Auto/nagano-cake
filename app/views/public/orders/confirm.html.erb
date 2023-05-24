@@ -13,6 +13,7 @@
 <% @current_items.each do|cart|%>
   <tr>
           <td>
+               <% end %>
            <%= image_tag item.image %>
 <%= cart.item.name %>
 <% (cart.item.price).tos(:delimited) %>

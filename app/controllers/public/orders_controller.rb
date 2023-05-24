@@ -11,8 +11,14 @@ def index
 end
 
 def show
-  
-@order = current_customer.orders.find(params[:id])
+@order=current_customer.orders.find(params[:id])
+@order_item= @order.ordering_item
+    @order.shipping_cost = 800
+    @total_price = 0
+    @ordering_details.each do |ordering_detail|
+     @total_price += ordering_detail.item.add_tax_price*ordering_detail.amount
+    end
+    @order.total_payment = @total_price + @order.shipping_cost
 end
 def update
    @order.update(order_params)
@@ -51,7 +57,7 @@ def complete
 end
 private
 def order_params
-  params.require(:order).permit(:payment_method)
+  params.require(:order).permit(:payment_method,:post_code,:address, :name,:customer_id, :total_payment )
 end
 end
 
