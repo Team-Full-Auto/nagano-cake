@@ -6,8 +6,9 @@
         transfer: "銀行振込"
 
       order_status:
-        waiting: "入金待ち"
-        paid_up: "入金済み"
+        before_paymen: "入金待ち"
+       confirm_payment: "入金済み"
+       making:　"制作中"
         preparing: "発送準備中"
         shipped: "発送済み"
 
