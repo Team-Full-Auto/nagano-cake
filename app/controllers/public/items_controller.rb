@@ -2,6 +2,7 @@ class Public::ItemsController < ApplicationController
   def index
     @items = Item.all
     @form = Item.new
+    # @customer = Customer.find(params[:id])
   end
   
   def show 
