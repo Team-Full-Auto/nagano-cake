@@ -4,7 +4,7 @@ def index
   @shipping_addresses = current_customer.shipping_addresses.all
   @customer = current_customer
   @shipping_address = ShippingAddress.new
- 
+
 end
 def edit
   @shipping_address = shipping_address.find(params[:id])

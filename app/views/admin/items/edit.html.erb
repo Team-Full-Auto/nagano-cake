@@ -2,18 +2,7 @@
   <div class='row'>
     <div class='mx-auto'>
       <h2>商品編集</h2>
-      <%= flash[:notice] %>
-      <%= form_with(model: @item, url: admin_items_path, method: :patch) do |f| %>
-      <!-- エラーメッセージ表示-->
-      <% if @item.errors.any? %>
-        <h3><%= @item.errors.count %>error occurrence</h3><!--エラーメッセ-->
-        <ul>
-          <% @item.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      <% end %>
-      <!-- エラーメッセージ表示-->
+      <%= form_with model:form do |f| %>
         <div class="form-group">
           <%= f.label :商品画像 %>
           <%= f.file_field :image, accept: "image/*" %>
