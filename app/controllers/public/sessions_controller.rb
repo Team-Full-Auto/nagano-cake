@@ -30,7 +30,7 @@ class Public::SessionsController < Devise::SessionsController
   def customer_state
     #入力されたemailからアカウントを一件取得
     @customer = Customer.find_by(email: params[:customer][:email])
-    #アカウントを取得できなかった場合、このメソッドを修了する
+    #アカウントを取得できなかった場合、このメソッドを終了する
     return if !@customer
     #取得したアカウントのパスワードと入力されたパスワードが一致しているかを判別
     if @customer.valid_password?(params[:customer][:password])

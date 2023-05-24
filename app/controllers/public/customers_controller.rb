@@ -1,4 +1,6 @@
 class Public::CustomersController < ApplicationController
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :authenticate_customer!
   before_action :is_matching_login_customer, only: [:edit,:update]
   def show
     @customer = Customer.find(params[:id])
@@ -9,10 +11,10 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
-    customer = Customer.find(params[:id])
-    if customer.update(customer_params)
+    @customer = Customer.find(params[:id])
+    if @customer.update(customer_params)
       flash[:notice] = "更新に成功しました"
-      redirect_to customer_path(customer.id)
+      redirect_to customer_path(@customer.id)
     else
       flash[:notice] = "更新に失敗しました"
       render :edit
@@ -20,6 +22,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def check
+    @customer = Customer.find(params[:id])
   end
 
   def withdrawal
@@ -41,5 +44,11 @@ class Public::CustomersController < ApplicationController
     unless customer.id == current_customer.id
       redirect_to customer_path(customer.id)
     end
+  end
+  
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up,keys:[:family_name,:last_name,:family_name_kana,:last_name_kana,:postcode,:address,:phone_number])
   end
 end
