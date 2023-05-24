@@ -1,4 +1,4 @@
-
+<%= render "layouts/header" %>
 <div class="container">
   <div class="row">
     <div class="col-md-9 mx-auto">
@@ -19,15 +19,22 @@
 </tr>
 <tr>
 
-<td><%= f.submit "新規登録" %></td>
+<td><%= f.submit "新規登録",class: "btn-success" %></td>
+<% end %>
 </tr>
+
 <table >
   <thead>
     <tbody>
-
+     <% @shippingsddress.each do |shippingsddress| %>
       <tr>
-        <td><%= link_to(@shipping_address) do %></td>
-
+        <lionk_to customer_path(shippingsddress.customer) do %>
+        <td><th<%= link_to @shpping_address.customer,shpping_address_path(@shipping_address) do %></td>
+         <% if @shpping_address._id == current_customer.id %>
+    <td><%= link_to"編集する", edit_shpping_address_path(@shpping_address.id),class:"btn-sm btn-success" %></td>
+   <% if @shpping_address == current_user %>
+   <td>  <%= link_to "削除する", book_path(@shpping_address), method: :delete,data: {confirm: "削除しますか？"} %>
+        <% end %>
         <% end %>
       </tr>
     <% end %>

@@ -10,4 +10,25 @@
       </p>
     </div>
   </div>
+  <h2>新着商品</h2>
+  <div class="row">
+    <% @top_items.each do |item| %>
+      <div class="col">
+        <div>
+          <%= link_to item_path(item.id) do %>
+            <%= image_tag item.image, size: "160x200" %>
+          <% end %>
+        </div>
+        <div>
+          <%= link_to item_path(item.id) do %>
+            <%= item.name %>
+          <% end %>
+        </div>
+        <div>
+          ￥<%= item.price %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <p><%= link_to "すべての商品を見る>", items_path %></p>
 </div>

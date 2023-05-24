@@ -1,11 +1,13 @@
 <% items.each do |item| %>
   <div class="index-group">
-    <%= image_tag item.image %>
+    <%= link_to item_path(item.id) do %>
+      <%= image_tag item.image, size: "200x240"%>
+    <% end %>
   </div>
   <div class="index-group">
     <%= link_to item.name, item_path(item)%>
   </div>
   <div class="index-group">
-  ￥<%= (item.price * 1.1).to_i %>
+  ￥<%= item.with_tax_price %>
   </div>
 <% end %>

@@ -4,15 +4,16 @@
 <div class='mx-auto'>
 <p>注文履歴詳細</p>
 <table>
-<th> <span class="border-0">注文日</span></th>
-<th></th>
-<th> <span class="border-0">配送先</span></th>
-   <th>   <%= @order.address %></th>
+     <% @orders.each do |order| %>
+<tr> <span class="border-0">注文日</span></th>
+    <th><%= order.created %> </th>
+<tr> <span class="border-0">配送先</span></th>
+   <th>   <%= order.shipping_address %></th>
       <th> <span class="border-0">支払金額</span></th>
-       <th> <%= @order.pay_method %></th>
+       <th> <%= order.pay_method %></th>
 
           <%= f.label :status, "注文ステータス" %>
-<% f.collection_select (:registered, current_customer.addresses.all, :id, :status) %>
+<% f.collection_select (:order_id, current_customer.addresses, :status) %>
 </div>
 </div>
 </div>
