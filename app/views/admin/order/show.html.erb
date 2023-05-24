@@ -13,7 +13,7 @@
        <th> <%= order.pay_method %></th>
 
           <%= f.label :status, "注文ステータス" %>
-<% f.collection_select (:order_id, current_customer.addresses, :id, :status) %>
+<% f.collection_select (:order_id, current_customer.addresses, :status) %>
 </div>
 </div>
 </div>
