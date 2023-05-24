@@ -1,5 +1,6 @@
 class OrderItem < ApplicationRecord
 belongs_to :order
 belongs_to :item
-enum making_status: { production_not_possible: 0, production_pending: 1, in_production: 2, production_complete: 3 }
+enum making_status: {before:0, waiting:1, making:2, finish:3}
+
 end

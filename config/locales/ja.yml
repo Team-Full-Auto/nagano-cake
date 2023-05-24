@@ -4,18 +4,17 @@
       payment_method: # カラム名（payment_methodカラムに対して）
         credit_card: "クレジットカード"
         transfer: "銀行振込"
-        
+
       order_status:
-        waiting: "支払待ち"
-        paid_up: "支払済み"
+        waiting: "入金待ち"
+        paid_up: "入金済み"
         preparing: "発送準備中"
         shipped: "発送済み"
-        
+
     order_item:
       making_status:
-          production_not_possible: "製作不可"
+          production_not_possible: "着手不可"
           production_pending: "製作待ち"
           in_production: "製作中"
           production_complete: "製作完了"
-        
- 
+
