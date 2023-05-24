@@ -3,7 +3,7 @@ class Admin::OrdersController < ApplicationController
 
 
 def show
-
+  @order = current_customer.orders.find(params[:id])
 end
 def update
     @order.find(params[:id])
