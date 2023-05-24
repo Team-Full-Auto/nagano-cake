@@ -24,6 +24,7 @@ class Public::CartItemsController < ApplicationController
   def index
     @cart_items = current_customer.cart_items.all
     @sum = 0
+    @customer = current_customer
   end
 
   def update
