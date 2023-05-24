@@ -9,10 +9,10 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
-    customer = Customer.find(params[:id])
-    if customer.update(customer_params)
+    @customer = Customer.find(params[:id])
+    if @customer.update(customer_params)
       flash[:notice] = "更新に成功しました"
-      redirect_to customer_path(customer.id)
+      redirect_to customer_path(@customer.id)
     else
       flash[:notice] = "更新に失敗しました"
       render :edit
@@ -20,6 +20,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def check
+    @customer = Customer.find(params[:id])
   end
 
   def withdrawal
