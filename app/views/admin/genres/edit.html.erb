@@ -2,7 +2,7 @@
   <div class='row'>
     <h2>ジャンル編集</h2>
     <%= flash[:notice] %>
-      <%= form_with(model: @genre, url: admin_genres_path, method: :pa) do |f| %>
+      <%= form_with(model: @genre, url: admin_genres_path, method: :patch) do |f| %>
       <!-- エラーメッセージ表示-->
       <% if @genre.errors.any? %>
         <h3><%= @genre.errors.count %>件のエラーが発生しました</h3><!--エラーメッセ-->

@@ -18,4 +18,6 @@ class Item < ApplicationRecord
   def with_tax_price
     (price * 1.1).floor
   end
+  
+  scope :recent_items, -> { order(created_at: :desc).limit(4) }
 end
