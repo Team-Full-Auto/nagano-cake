@@ -1,4 +1,5 @@
 <% items.each do |item| %>
+<div class="col">
   <div class="index-group">
     <%= link_to item_path(item.id) do %>
       <%= image_tag item.image, size: "200x240"%>
@@ -10,4 +11,5 @@
   <div class="index-group">
   ￥<%= item.with_tax_price %>
   </div>
+</div>
 <% end %>

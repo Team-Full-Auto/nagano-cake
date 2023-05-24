@@ -1,11 +1,11 @@
-<%= render 'layouts/header', customer: @customer%>
+<%= render 'layouts/header'%>
 <div class="container px-5">
   <div class="row">
-      
+
       <div class="col-md-4">
         <h2>商品詳細</h2>
         <%= flash[:notice] %>
-        <%= image_tag @item.image, class="img-fluid"%>
+        <%= image_tag @item.image, class: "img-fluid"%>
       </div>
       <div class="col-md-8">
         <div class="show-group">
@@ -27,6 +27,9 @@
         <div class="show-group">
           <span>ステータス</span>
           <%=%>
+        </div>
+        <div>
+          <%= link_to "編集する", edit_admin_item_path(@item), class: "btn btn-success" %>
         </div>
       </div>
   </div>
