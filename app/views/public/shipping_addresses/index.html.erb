@@ -29,7 +29,7 @@
      <% @shippingsddress.each do |shippingsddress| %>
       <tr>
         <lionk_to customer_path(shippingsddress.customer) do %>
-        <td><th<%= link_to @shpping_address.customer,shpping_address_path(@shipping_address) do %></td>
+        <td><th></th><%= link_to @shpping_address.customer,shpping_address_path(@shipping_address) do %></td>
          <% if @shpping_address._id == current_customer.id %>
     <td><%= link_to"編集する", edit_shpping_address_path(@shpping_address.id),class:"btn-sm btn-success" %></td>
    <% if @shpping_address == current_user %>
@@ -38,6 +38,7 @@
         <% end %>
       </tr>
     <% end %>
+    <%end%>
     </tbody>
 </table>
 </div>

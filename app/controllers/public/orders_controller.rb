@@ -11,6 +11,7 @@ def index
 end
 
 def show
+  @order=Order,find(params[])
 @order = current_customer.orders.find(params[:id])
 end
 def update

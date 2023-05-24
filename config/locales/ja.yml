@@ -5,17 +5,4 @@
         credit_card: "クレジットカード"
         transfer: "銀行振込"
 
-      order_status:
-        before_paymen: "入金待ち"
-       confirm_payment: "入金済み"
-       making:　"制作中"
-        preparing: "発送準備中"
-        shipped: "発送済み"
-
-    order_item:
-      making_status:
-          production_not_possible: "着手不可"
-          production_pending: "製作待ち"
-          in_production: "製作中"
-          production_complete: "製作完了"
-
+    
