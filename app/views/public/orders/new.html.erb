@@ -1,4 +1,4 @@
-<%= render "homes/header" %>
+<%= render "layouts/header" %>
 <div class="container">
   <div class="row">
     <div class='mx-auto'>
@@ -10,8 +10,6 @@
                 <tr>
 <th><%= f.radio_button :pay_method,"credit_card" %></th>
 <td><%= f.label :pay_method_number1, "クレジットカード" %></td>
-</tr>
-<tr>
 <th><%= f.radio_button :pay_method,"transfer"%></th>
 <td><%= f.label :pay_method_number2, "銀行支払い" %></td>
 </tr>

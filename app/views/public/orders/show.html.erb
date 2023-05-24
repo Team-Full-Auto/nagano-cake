@@ -7,21 +7,21 @@
   <table>
     <tr>
     <tr><th><span class="border-0">注文日</span></th>
-    <th><%= @order.crate_at %></th>
+    <th><%= order.crate_at %></th>
     </tr>
 
       <tr> <th><span class="border-0"> 配送先</span></th>
-     <th> <%= @order.address %>
+     <th> <%= order.address %>
       </th>
 
       </tr>
 
        <tr> <th><span class="border-0"> 支払方法</span>
-       </th><th><%= @order.payment_method %></th>
+       </th><th><%= order.payment_method %></th>
        </tr>
 
         <th><span class="border-0"> ステータス</span>
-        </th><th><%= @order.status %></th>
+        </th><th><%= order.status %></th>
     </tr>
   </table>
   </div>

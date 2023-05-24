@@ -29,16 +29,16 @@
         <div class='col-3'>
             <table class="table table-bordered border-dark">
                 <% @order.postage = 800 %>
-                <tr><th class="table-secondary">送料</th><td><%= @order.postage %></td></tr>
+                <tr><th class="table-secondary">送料</th><td><%= order.postage %></td></tr>
                 <tr><th class="table-secondary">商品合計</th><td><%= total.to_i %></td></tr>
                 <% @order.total_payment = @order.postage + total.to_i %>
-                <tr><th class="table-secondary">請求金額</th><td><%= @order.total_payment %></td></tr>
+                <tr><th class="table-secondary">請求金額</th><td><%= order.total_payment %></td></tr>
             </table>
         </div>
     </div>
 
 <p>ご請求金額</p>
-<%= @total.to_s(:delimited) %> <!-- お買い物の合計金額 -->
+<%= total.to_s(:delimited) %> <!-- お買い物の合計金額 -->
  <tr><th>支払方法</th><td class="col-10"><%= @order.payment_method %></td></tr>
 <p>お届け先</p>
 <%= @order.shipping_post_code %>
