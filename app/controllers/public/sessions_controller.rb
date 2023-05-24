@@ -35,8 +35,6 @@ class Public::SessionsController < Devise::SessionsController
     #取得したアカウントのパスワードと入力されたパスワードが一致しているかを判別
     if @customer.valid_password?(params[:customer][:password])
       redirect_to  new_customer_registration_path
-    else
-      redirect_to customer_session_path
     end
   end
 end
