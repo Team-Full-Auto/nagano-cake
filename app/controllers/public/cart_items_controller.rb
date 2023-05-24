@@ -1,4 +1,5 @@
 class Public::CartItemsController < ApplicationController
+  before_action :authenticate_customer!
   def create
     @cart_item = current_customer.cart_items.new(cart_item_params)
       # もし元々カート内に「同じ商品」がある場合、「数量を追加」更新・保存する
