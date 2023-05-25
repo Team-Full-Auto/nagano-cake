@@ -3,48 +3,42 @@
   <h2>配送先登録/一覧</h2>
   <div class="row">
     <div class="col-md-9 mx-auto">
-      <%= form_with model: @shipping_address,  local: true do |f| %>
-        <table class="table table-hover table-inverse table-borderless">
-          <tr>
-            <th><%= f.label :postcode,"郵便番号"%></th>
-            <td><%= f.text_field :postcode %></td>
-          </tr>
-          <tr>
-            <th><%= f.label :address,"住所" %></th>
-            <td><%= f.text_field :address %></td>
-          </tr>
-          <tr>
-            <th><%= f.label :name,"宛名"%></th>
-            <td><%= f.text_field :name %></td>
-          </tr>
-          <tr>
-            <td><%= f.submit "新規登録",class: "btn-success" %></td>
-          </tr>
-        </table>
-      <% end %>
-      <% @shipping_addresses.each do |shippingaddress| %>
-        <table class="table table-hover table-inverse table-bordered">
-          <thead>
-            <tr>
-              <th>郵便番号</th>
-              <th>住所</th>
-              <th>宛名</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><%= shippingaddress.postcode %></td>
-              <td><%= shippingaddress.address %></td>
-              <td><%= shippingaddress.name %></td>
-              <td>
-                <%= link_to"編集する", edit_shipping_address_path(shippingaddress.id),class:"btn-sm btn-success" %>
-                <%= link_to "削除する",shipping_address_path(shippingaddress.id), method: :delete,class:"btn-sm btn-danger" %>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      <%end%>
-    </div>
-  </div>
+    <p>配送先登録一覧</p>
+<table class="table table-hover table-inverse">
+<%= form_with model: @shipping_address,  local: true do |f| %>
+<tr>
+<th><%= f.label :postcode,"郵便番号"%></th>
+<td><%= f.text_field :postcode %></td>
+</tr>
+<tr>
+<th><%= f.label :address,"住所" %></th>
+<td><%= f.text_field :address %></td>
+</tr>
+<tr>
+<th><%= f.label :name,"宛名"%></th>
+<td><%= f.text_field :name %></td>
+</tr>
+<tr>
+
+<td><%= f.submit "新規登録",class: "btn-success" %></td>
+<% end %>
+</tr>
+
+<table >
+  <thead>
+    <tbody>
+     <% @shipping_addresses.each do |shippingaddress| %>
+      <tr>
+        <td><%= shippingaddress.postcode %></td>
+        <td><%= shippingaddress.address %></td>
+        <td><%= shippingaddress.name %></td>
+         <td><%= link_to"編集する", edit_shipping_address_path(shippingaddress.id),class:"btn-sm btn-success" %></td>
+           <td>  <%= link_to "削除する",shipping_address_path(shippingaddress.id), method: :delete,class:"btn-sm btn-danger" %></td>
+      </tr>
+    <%end%>
+
+    </tbody>
+</table>
+</div>
+</div>
 </div>
