@@ -1,8 +1,27 @@
 <%= render "layouts/header" %>
 <div class="container px-5">
+  <h2>注文履歴一覧</h2>
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h1>TOPページ</h1>
+      <% @order.each do |order| %>
+        <table class="table table-hover table-inverse table-bordered">
+          <thead>
+            <tr>
+              <th>購入日時</th>
+              <th>購入者</th>
+              <th>注文個数</th>
+              <th>注文ステータス</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= order.created_at %></td>
+              <td><%= order.customer.name %></td>
+              <td><%= %></td>
+              <td><%= order.status %></td>
+            </tr>
+          </tbody>
+        </table>
     </div>
   </div>
 </div>

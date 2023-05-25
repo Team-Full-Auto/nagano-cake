@@ -1,27 +1,29 @@
 <%= render "layouts/header",customer: current_customer %>
 <div class="container">
-<div class="row">
-  <div class="center-block">
-<%= form_with model: @shipping_address, local: true do |f| %>
-  <div class="form-group">
-   <%= f.label :postcode,"郵便番号" %>
-    <%= f.text_field :postcode  %>
+  <h2>配送先編集</h2>
+  <div class="row">
+    <div class="col mx-auto mt-5">
+      <%= form_with model: @shipping_address, local: true do |f| %>
+        <table class="table table-hover table-inverse table-borderless">
+          <tr>
+            <th><%= f.label :postcode,"郵便番号" %></th>
+            <td><%= f.text_field :postcode  %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :address,"住所" %></th>
+            <td><%= f.text_field :address %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :name,"宛名"%></th>
+            <td><%= f.text_field :name %></td>
+          </tr>
+        </table>
+        <div>
+          <%= f.submit "変更内容を保存する" ,class: "btn-success"%>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <div class="form-group">
-   <%= f.label :address,"住所" %>
-    <%= f.text_field :address %>
-  </div>
-  <div class="form-group">
-  <%= f.label :name,"宛名"%>
-<%= f.text_field :name %>
-</div>
-  <div class="form-group">
-    <%= f.submit "変更内容を保存する" ,class: "btn-success"%>
-  </div>
-<% end %>
-
-</div>
-</div>
 </div>
 
 
