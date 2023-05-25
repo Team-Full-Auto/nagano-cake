@@ -7,7 +7,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav row">
         <% if customer_signed_in? %>
         <span class="navbar-text">ようこそ、<%= customer.family_name %>さん！</span>
           <li class="nav-item">
@@ -25,19 +25,19 @@
         <% elsif %>
           <% if admin_signed_in? %>
             <li class="nav-item">
-              <%= link_to "商品一覧",admin_items_path %>
+              <%= link_to "商品一覧",admin_items_path, class: "nav-link text-dark" %>
             </li>
             <li class="nav-item">
-              <%= link_to "会員一覧",admin_customers_path %>
+              <%= link_to "会員一覧",admin_customers_path, class: "nav-link text-dark" %>
             </li>
             <li class="nav-item">
-              <%= link_to "注文履歴一覧",admin_root_path %>
+              <%= link_to "注文履歴一覧",admin_root_path, class: "nav-link text-dark" %>
             </li>
             <li class="nav-item">
-              <%= link_to "ジャンル一覧",admin_genres_path %>
+              <%= link_to "ジャンル一覧",admin_genres_path, class: "nav-link text-dark" %>
             </li>
             <li class="nav-item">
-              <%= link_to "ログアウト",destroy_admin_session_path %>
+              <%= link_to "ログアウト",destroy_admin_session_path, class: "nav-link text-dark" %>
             </li>
           <% end %>
         <% else %>
