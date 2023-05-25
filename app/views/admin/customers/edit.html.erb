@@ -6,7 +6,7 @@
         <%= @customer.family_name %>
         <%= @customer.last_name %>さんの会員情報編集
       </h3>
-      <table class="table table-hover table-inverse">
+      <table class="table table-hover table-inverse border=1" border="1">
         <%= form_with model: @customer,url: admin_customer_path(@customer.id),method: :patch, local:true do |f| %>
           <tr>
             <th><%= f.label :family_name, "氏名" %></th>
