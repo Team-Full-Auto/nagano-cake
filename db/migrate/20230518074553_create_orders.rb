@@ -9,6 +9,7 @@ class CreateOrders < ActiveRecord::Migration[6.1]
       t.text :address, null: false
       t.string :postcode, null: false
       t.string :address_name, null: false
+      t.string :delivery_address
 
       t.timestamps
     end
