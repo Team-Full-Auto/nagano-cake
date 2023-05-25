@@ -7,9 +7,11 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <% if customer_signed_in? %>
+        <div class="text-dark">ようこそ、<%= customer.family_name %>さん！</div>
+      <% end %>
       <ul class="navbar-nav row">
         <% if customer_signed_in? %>
-        <span class="navbar-text">ようこそ、<%= customer.family_name %>さん！</span>
           <li class="nav-item">
             <%= link_to "マイページ", customer_path(current_customer), class: "nav-link text-dark" %>
           </li>
