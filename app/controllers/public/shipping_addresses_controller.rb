@@ -19,19 +19,20 @@ def create
   @shipping_address.customer_id = current_customer.id
    @shipping_addresses = ShippingAddress.all
   if@shipping_address.save
-    redirect_to shipping_address_path
+    redirect_to shipping_addresses_path
   else
     render :index
   end
 end
 def update
-  @shipping_address = shipping_address.find(params[:id])
-   redirect_to shipping_addresses_path(@shipping_addresses.id)
-     flash[:notice]
+  @shipping_address = ShippingAddress.find(params[:id])
+  @shipping_address.update(shipping_address_params)
+   redirect_to shipping_addresses_path(@shipping_address.id)
+     flash[:notice] = "更新しました"
 end
 def destroy
-   shipping_address = shipping_address.find(params[:id])
-   shipping_address.destroy
+   @shipping_address = ShippingAddress.find(params[:id])
+   @shipping_address.destroy
    redirect_to shipping_addresses_path
 end
 private
