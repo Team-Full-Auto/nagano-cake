@@ -22,7 +22,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def check
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
   end
 
   def withdrawal
@@ -34,7 +34,7 @@ class Public::CustomersController < ApplicationController
   end
 
   private
-  
+
   def customer_params
     params.require(:customer).permit(:family_name,:last_name,:family_name_kana,:last_name_kana,:postcode,:address,:phone_number,:email)
   end
