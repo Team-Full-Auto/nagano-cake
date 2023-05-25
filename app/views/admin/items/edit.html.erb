@@ -3,7 +3,6 @@
   <div class='row'>
     <div class='mx-auto'>
       <h2>商品編集</h2>
-      <%= form_with(model: @item, url: admin_item_path(@item), method: :patch) do |f| %>
       <!-- エラーメッセージ表示-->
       <% if @item.errors.any? %>
         <h3><%= @item.errors.count %>件のエラーが発生しました</h3><!--エラーメッセ-->
@@ -14,34 +13,39 @@
         </ul>
       <% end %>
       <!-- エラーメッセージ表示-->
+      <%= form_with(model: @item, url: admin_item_path(@item), method: :patch) do |f| %>
+        <table class="table table-hover table-inverse">
+          <tr>
+            <th><%= f.label :image, "商品画像" %></th>
+            <td><%= f.file_field :image, accept: "image/*" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :name, "商品名" %></th>
+            <td><%= f.text_field :name %></td>
+          <tr>
+            <th><%= f.label :detail, "商品説明"%></th>
+            <td><%= f.text_area :detail %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :genre, "ジャンル" %></th>
+            <td><%= f.collection_select :genre_id, Genre.all, :id, :name, {prompt: "選択してください"} %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :price, "税抜価格" %></th>
+            <td><%= f.number_field :price %>円</td>
+          </tr>
+          <tr>
+            <th><%= f.label :is_selling, "販売ステータス" %></th>
+            <td>
+              <%= f.radio_button :is_selling, true %>
+              <%= f.label :is_selling, "販売中" %>
+              <%= f.radio_button :is_selling, false %>
+              <%= f.label :is_selling, "販売停止中" %>
+          </td>
+          </tr>
+        </table>
         <div class="form-group">
-          <%= f.label :image, "商品画像" %>
-          <%= f.file_field :image, accept: "image/*" %>
-        </div>
-        <div classs="form-group">
-          <%= f.label :name, "商品名" %>
-          <%= f.text_field :name %>
-        </div>
-        <div classs="form-group">
-          <%= f.label :detail, "商品説明" %>
-          <%= f.text_area :detail %>
-        </div>
-        <div class="form-group">
-          <%= f.label :genre, "ジャンル" %>
-          <%= f.collection_select :genre_id, Genre.all, :id, :name, {prompt: "選択してください"} %>
-        </div>
-        <div classs="form-group">
-          <%= f.label :price, "税抜価格" %>
-          <%= f.number_field :price %>円
-        </div>
-        <div class="form-group">
-          <%= f.radio_button :is_selling, true %>
-          <%= f.label :is_selling, "販売中" %>
-          <%= f.radio_button :is_selling, false %>
-          <%= f.label :is_selling, "売切れ" %>
-        </div>
-        <div classs="form-group">
-          <%= f.submit "編集", class: 'btn btn-success' %>
+          <%= f.submit "新規登録", class: 'btn btn-success' %>
         </div>
       <% end %>
     </div>

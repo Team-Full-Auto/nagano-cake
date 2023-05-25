@@ -1,8 +1,8 @@
 <% items.each do |item| %>
-<div class="col">
+<div class="col mt-5">
   <div class="index-group">
     <%= link_to item_path(item.id) do %>
-      <%= image_tag item.image, size: "200x240"%>
+      <%= image_tag item.image, size: "200x180"%>
     <% end %>
   </div>
   <div class="index-group">
