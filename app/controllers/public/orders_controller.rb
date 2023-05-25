@@ -47,11 +47,34 @@ def create
 end
 
 def confirm
- #@order = Order.new(order_params)
+    @order = Order.new(order_params)
     @address = Address.find(params[:order][:address_id])
-    @order.postal_code = @address.postal_code
+    @order.post_code = @address.postal_code
     @order.address = @address.address
     @order.name = @address.name
+    @shipping_cost = 800
+    @total_prie = 0
+    @cart_items.each do |cart_item|
+    @total_price += cart_item.item.add_tex_price*cart_item.amount
+end
+@order.total_payment = @total_price + @order.shipping_ccost
+@order.payment_method = params[:order][:payment_method]
+if params[:order][:select_number] == 0.to_s
+   @order.postal_code = current_customer.postal_code
+       @order.address = current_customer.address
+       @order.name = current_customer.first_name + current_customer.last_name
+elsif params[:order][:select_number] == 1.to_s
+        address = current_customer.addresses.find(params[:order][:address_id].to_i)#[:order][:address_id]の文字列を数字に変えるto_iを記述
+
+        @order.postal_code = address.postal_code#上段で持ってきたaddressのidのpostal_codeを右辺に送る。
+        @order.address = address.address
+        @order.name = address.name
+elsif params[:order][:select_number] == 2.to_s
+
+        @order.postal_code = params[:order][:postal_code]#フォームで入力したデータをparamsが持ってきて[:order][:postal_code]で郵便番号を呼び出す。
+        @order.address = params[:order][:address]
+        @order.name = params[:order][:name]
+
 end
 def complete
 end
