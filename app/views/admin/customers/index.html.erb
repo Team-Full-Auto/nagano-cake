@@ -1,8 +1,7 @@
-<%#= render "homes/header" %>
+<%= render "layouts/header" %>
 <div class="container px-5">
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <div class="center-block">
+    <div class="col-sm-12 col-md-8 col-lg-8 px-5 px-sm-0 mx-auto">
       <h3>会員一覧</h3>
       <table class="table rable-hover table-inverse">
         <thead>
@@ -23,18 +22,19 @@
                 <%= customer.last_name %>
               <% end %>
             </td>
-            <td><%= customer.address %></td>
+            <td><%= customer.email %></td>
             <td>
               <% if customer.is_deleted? %>
                 <p>退会</p>
               <% else %>
-                <p>有効</p>
+                <p class="text-success"><strong>有効</strong></p>
               <% end %>
             </td>
           </tr>
           <% end %>
         </tbody>
       </table>
+      <%= paginate @customers %>
     </div>
   </div>
 </div>
