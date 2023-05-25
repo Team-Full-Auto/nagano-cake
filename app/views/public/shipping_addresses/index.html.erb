@@ -1,21 +1,21 @@
-<%= render "layouts/header" %>
+<%= render "layouts/header",customer: current_customer %>
 <div class="container">
   <div class="row">
     <div class="col-md-9 mx-auto">
     <p>配送先登録一覧</p>
 <table class="table table-hover table-inverse">
-<%= form_with model: @shippingsddress,  local: true do |f| %>
+<%= form_with model: @shipping_address,  local: true do |f| %>
 <tr>
-<th><%= f.label :post_code,"郵便番号"%></th>
-<td><%= f.text_field :post_code %></td>
+<th><%= f.label :postcode,"郵便番号"%></th>
+<td><%= f.text_field :postcode %></td>
 </tr>
 <tr>
 <th><%= f.label :address,"住所" %></th>
 <td><%= f.text_field :address %></td>
 </tr>
 <tr>
-<th><%= f.label :address_name,"宛名"%></th>
-<td><%= f.text_field :address_name %></td>
+<th><%= f.label :name,"宛名"%></th>
+<td><%= f.text_field :name %></td>
 </tr>
 <tr>
 
@@ -26,18 +26,16 @@
 <table >
   <thead>
     <tbody>
-     <% @shippingsddress.each do |shippingsddress| %>
+     <% @shipping_addresses.each do |shippingaddress| %>
       <tr>
-        <lionk_to customer_path(shippingsddress.customer) do %>
-        <td><th<%= link_to @shpping_address.customer,shpping_address_path(@shipping_address) do %></td>
-         <% if @shpping_address._id == current_customer.id %>
-    <td><%= link_to"編集する", edit_shpping_address_path(@shpping_address.id),class:"btn-sm btn-success" %></td>
-   <% if @shpping_address == current_user %>
-   <td>  <%= link_to "削除する", book_path(@shpping_address), method: :delete,data: {confirm: "削除しますか？"} %>
-        <% end %>
-        <% end %>
+        <td><%= shippingaddress.postcode %></td>
+        <td><%= shippingaddress.address %></td>
+        <td><%= shippingaddress.name %></td>
+         <td><%= link_to"編集する", edit_shipping_address_path(shippingaddress.id),class:"btn-sm btn-success" %></td>
+           <td>  <%= link_to "削除する",shipping_address_path(shippingaddress.id), method: :delete,class:"btn-sm btn-danger" %></td>
       </tr>
-    <% end %>
+    <%end%>
+
     </tbody>
 </table>
 </div>
