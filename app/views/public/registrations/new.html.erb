@@ -1,63 +1,75 @@
 <%= render "layouts/header" %>
 <div class="container px-5">
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
+    <div class="col text-left">
       <h3>新規会員登録</h3>
-      <div class="center-block">
+      <form class="form-horizontal">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "public/shared/error_messages", resource: resource %>
-        <div class="form-group">
-          <%= f.label :name, "名前" %>
-          <%= f.text_field :family_name, autofocus: true, placeholder: "性" %>
-          <%= f.text_field :last_name, autofocus: true, placeholder: "名" %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :name_kana, "フリガナ" %>
-          <%= f.text_field :family_name_kana, autofocus: true, placeholder: "セイ" %>
-          <%= f.text_field :last_name_kana, autofocus: true, placeholder: "メイ" %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :email, "メールアドレス" %>
-          <%= f.email_field :email, autofocus: true, placeholder: "sample@example.com", autocomplete: "email" %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :postcode, "郵便番号（ハイフンなし）" %>
-          <%= f.text_field :postcode, autofocus: true, placeholder: "0000000" %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :address, "住所" %>
-          <%= f.text_area :address, autofocus: true, placeholder: "東京都渋谷新宿区神園町０−０" %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :phone_number, "電話番号（ハイフンなし）" %>
-          <%= f.telephone_field :phone_number, autofocus: true, placeholder: "00000000000" %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :password, "パスワード" %>
-          <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> 文字以上)</em>
-          <% end %>
-          <%= f.password_field :password, autocomplete: "new-password" %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :password_confirmation, "パスワード（確認用）" %>
-          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-        </div>
-
-        <div class="form-group">
-          <%= f.submit "新規登録", class:"btn btn-success" %>
-        </div>
+        <table>
+          <div class="form-group row">
+            <tr>
+              <th class="pb-3"><%= f.label :name, "名前" %></th>
+              <td>(性)<%= f.text_field :family_name, autofocus: true, placeholder: "性" %></td>
+              <td>(名)<%= f.text_field :last_name, autofocus: true, placeholder: "名" %></td>
+            </tr>
+          </div>
+          <div class="form-group row">
+            <tr>
+              <th class="pb-3"><%= f.label :name_kana, "フリガナ" %></th>
+              <td>(セイ)<%= f.text_field :family_name_kana, autofocus: true, placeholder: "セイ" %></td>
+              <td>(メイ)<%= f.text_field :last_name_kana, autofocus: true, placeholder: "メイ" %></td>
+            </tr>
+          </div>
+          <div class="form-gourp row">
+            <tr>
+              <th class="pb-3"><%= f.label :email, "メールアドレス" %></th>
+              <td><%= f.email_field :email, autofocus: true, placeholder: "sample@example.com", autocomplete: "email" %></td>
+            </tr>
+          </div>
+          <div class="form-gourp row">
+            <tr>
+              <th class="pb-3"><%= f.label :postcode, "郵便番号（ハイフンなし）" %></th>
+              <td><%= f.text_field :postcode, autofocus: true, placeholder: "0000000" %></td>
+            </tr>
+          </div>
+          <div class="form-gourp row">
+            <tr>
+              <th class="pb-3"><%= f.label :address, "住所" %></th>
+              <td><%= f.text_area :address, autofocus: true, placeholder: "東京都渋谷新宿区神園町０−０",size:"50" %></td>
+            </tr>
+          </div>
+          <div class="form-group row">
+            <tr>
+              <th class="pb-3"><%= f.label :phone_number, "電話番号（ハイフンなし）" %></th>
+              <td><%= f.telephone_field :phone_number, autofocus: true, placeholder: "00000000000" %></td>
+            </tr>
+          </div>
+          <div class="form-group row">
+            <tr>
+              <th class="pb-3"><%= f.label :password, "パスワード" %>
+                <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> 文字以上)</em>
+                <% end %>
+              </th>
+              <td><%= f.password_field :password, autocomplete: "new-password" %></td>
+            </tr>
+          </div>
+          <div class="form-group row">
+            <tr>
+              <th class="pb-3"><%= f.label :password_confirmation, "パスワード（確認用）" %></th>
+              <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+            </tr>
+          </div>
+          <tr>
+            <th class="pb-3"></th>
+            <td><%= f.submit "新規登録", class:"btn btn-lg btn-success" %></td>
+          </tr>
+        </table>
       <% end %>
       <h3>既に登録済みの方</h3>
-      <div><%= link_to "こちら",new_session_path(resource_name) %>からログインしてください</div>
-      </div>
+      <%= link_to "こちら",new_session_path(resource_name) %>からログインしてください
+      </form>
     </div>
   </div>
 </div>
