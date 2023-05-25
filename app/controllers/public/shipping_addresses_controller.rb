@@ -19,7 +19,7 @@ def create
   @shipping_address.customer_id = current_customer.id
    @shipping_addresses = ShippingAddress.all
   if@shipping_address.save
-    redirect_to shipping_address_path(@shipping_address.id)
+    redirect_to shipping_address_path
   else
     render :index
   end
