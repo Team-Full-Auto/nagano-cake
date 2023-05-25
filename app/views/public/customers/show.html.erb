@@ -13,7 +13,7 @@
       <h3>マイページ</h3>
       <h4>登録情報<%= link_to "編集する", edit_customer_path(@customer.id), class:"btn btn-success" %></h4>
       <%= flash[:notice] %>
-      <table class="table table-hover table-inverse" border="1" style="border-collapse: collapse">
+      <table class="table table-hover table-inverse table-bordered">
         <tr>
           <th>氏名</th>
           <td><%= @customer.family_name %><%= @customer.last_name %></td>
