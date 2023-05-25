@@ -14,39 +14,41 @@
             </tr>
             <tr>
             <th>お届け先</th>
-            <td><%= f.radio_button :shipping_address_number,0 %></td>
-            <td><%= f.label :address_number1, "ご自身の住所" %></td>
-            <td><% @current_customer.address %></td>
+              <td><%= f.radio_button :shipping_address_number,0 %></td>
+              <td><%= f.label :address_number1, "ご自身の住所" %></td>
+              <td><% @current_customer.address %></td>
             </tr>
-          <tr>
-            <th><% f.radio_button :shipping_address_number,1 %></th>
-            <th><%= f.label :address_number1, "登録先の住所" %></th>
-            <th><% f.collection_select(:shipping_address_id,current_customer.shipping_addresses, :id, :address) %></th>
-            </td>
-          </tr>
-          <tr>
-          <td><th><%= f.radio_button :shipping_address_number,2 %></th>
-          <th><%= f.label :address_number3, "新しいお届け先" %></th></td>
-          </tr>
-          <tr>
-            <td>
-          <th><%= f.label :postcode,"郵便番号" %></th>
-          <th><%= f.text_field :postcode %></th></td>
-          </td>
-          </tr>
-          <tr>
-            <td>
-          <th><%= f.label :address,"住所"%></th>
-          <th><%= f.text_field :address %></th>
-          </td></tr>
-          <tr>
-            <td>
-          <th><%= f.label :address_name,"宛名"%></th>
-          <th><%= f.text_field :address_name %></th>
-          </td></tr>
-          <tr>
-          <td><%= f.submit  "確認画面へ進む",class: 'btn btn-success' %></td>
-          </tr>
+            <tr>
+              <th><% f.radio_button :shipping_address_number,1 %></th>
+              <th><%= f.label :address_number1, "登録先の住所" %></th>
+              <th><% f.collection_select(:shipping_address_id,current_customer.shipping_addresses, :id, :address) %></th>
+              </td>
+            </tr>
+            <tr>
+              <td><th><%= f.radio_button :shipping_address_number,2 %></th>
+              <th><%= f.label :address_number3, "新しいお届け先" %></th></td>
+            </tr>
+            <tr>
+              <td>
+                <th><%= f.label :postcode,"郵便番号" %></th>
+                <th><%= f.text_field :postcode %></th>
+              </td>
+            </tr>
+            <tr>
+              <td>
+              <th><%= f.label :address,"住所"%></th>
+              <th><%= f.text_field :address %></th>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <th><%= f.label :address_name,"宛名"%></th>
+                <th><%= f.text_field :address_name %></th>
+              </td>
+            </tr>
+            <tr>
+              <td><%= f.submit  "確認画面へ進む",class: 'btn btn-success' %></td>
+            </tr>
        <% end %>
     </div>
   </div>
