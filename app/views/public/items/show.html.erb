@@ -17,7 +17,7 @@
       </div>
       <%= form_with(model: @cart_item, url: cart_items_path, method: :post) do |f| %>
         <div class="show-group mt-4">
-          <%= f.number_field :quantity, min: 1, max: 100, placeholder: "個数選択", size: "80x30", class:"quantity-select-form"  %>
+          <%= f.number_field :quantity, min: 1, max: 100, placeholder: "個数選択", class:"quantity-select-form"  %>
         </div>
         <div class="show-group mt-4">
         <%= f.hidden_field :item_id, :value => @item.id %>

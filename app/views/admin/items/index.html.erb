@@ -1,14 +1,15 @@
 <%= render "layouts/header" %>
 <div class="container px-5">
   <div class="row mx-auto mt-5">
-    <h2>商品一覧</h2>
-      <div class="pull-right">
+    <div class="col-11">
+      <h2>商品一覧</h2>
+    </div>
+    <div class="col-1">
       <%= link_to  new_admin_item_path, class: "btn btn-default" do %>
         <i class="fas fa-plus-circle fa-lg"></i>
       <% end %>
-      </div>
-      
-    <div class="col mx-auto mt-5">
+    </div>
+    <div class="col mx-auto mt-4">
       <%= render 'index', items: @items %>
     </div>
     <%= paginate @items %>
