@@ -1,16 +1,16 @@
 class Public::ItemsController < ApplicationController
   def index
-    @items = Item.all
+    @items = Item.page(params[:page]).reverse_order
     @form = Item.new
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
   end
-  
-  def show 
+
+  def show
     @item = Item.find(params[:id])
     @cart_item = CartItem.new
     @customer = current_customer
   end
-  
+
   private
 
   def item_params
