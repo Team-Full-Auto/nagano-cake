@@ -2,23 +2,27 @@
 <div class="container px-5">
   <h2>商品詳細</h2>
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4 mt-5">
       <%= image_tag @item.image, class: "img-fluid" %>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-8 mt-5">
       <div class="show-group">
-        <h2><%= @item.name %></h2>
+        <h1><%= @item.name %></h1>
       </div>
-      <div class="show-group">
-        <%= @item.detail %>
+      <div class="show-group mt-3">
+        <h3><%= @item.detail %></h3>
       </di>
-      <div class="show-group">
-        ￥<%= @item.with_tax_price %>
+      <div class="show-group mt-4">
+        <h2>￥<%= @item.with_tax_price %></h2><h4>(税込み)</h4>
       </div>
       <%= form_with(model: @cart_item, url: cart_items_path, method: :post) do |f| %>
-        <%= f.select :quantity, *[1..100], placeholder: '個数選択' %>
+        <div class="show-group mt-4">
+          <%= f.number_field :quantity, min: 1, max: 100, placeholder: "個数選択", class:"quantity-select-form"  %>
+        </div>
+        <div class="show-group mt-4">
         <%= f.hidden_field :item_id, :value => @item.id %>
         <%= f.submit "カートに入れる", class: 'btn btn-success' %>
+        </div>
       <% end %>
     </div>
   </div>
