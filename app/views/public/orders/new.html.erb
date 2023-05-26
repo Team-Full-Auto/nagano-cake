@@ -4,7 +4,7 @@
     <div class='mx-auto'>
       <h4>注文情報入力</h4>
       <p><%= flash[:notice] %></p>
-        <%= form_with(model: @order ,url: orders_confirm_path) do |f| %>
+        <%= form_with model: @order ,url: orders_confirm_path do |f| %>
           <table class="table table-hover table-inverse">
             <tr>
               <th>支払い方法</th>

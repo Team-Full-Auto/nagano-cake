@@ -8,12 +8,11 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-    @customer = Customer.find(current_customer.id)
     @total_price = 0
     @cart_items = current_customer.cart_items
     @order = Order.new(order_params)
     if order_params[:pay_method].nil?
-      flas[:notice] = "支払い方法を選択してください"
+      flash[:notice] = "支払い方法を選択してください"
       redirect_back(fallback_location: root_path)
     else
     # 自身の住所が選択された場合
@@ -21,17 +20,14 @@ class Public::OrdersController < ApplicationController
         @order.postcode = current_customer.postcode
         @order.address = current_customer.address
         @order.address_name = current_customer.family_name + current_customer.last_name
-        redirect_to orders_confirm_path
     # 登録先住所が選択された場合
       elsif params[:order][:select_address] = "2"
         @address = ShippingAddress.find_by(params[:order][:shipping_address_id])
         @order.postcode = @address.postcode
         @order.address = @address.address
         @order.address_name = @address.name
-        redirect_to orders_confirm_path
       # 新しいお届け先が選択された場合
       elsif params[:order][:select_address] = "3"
-        redirect_to orders_confirm_path
     # 　どのお届け先も選択されていないとき
       else
         flash[:notice] = "お届け先を選択してください"
@@ -71,41 +67,42 @@ class Public::OrdersController < ApplicationController
 #     @total_price = 0
 #   end
 
-  # def create
-  #   cart_items = current_customer.cart_item.all
-  #   @order = current_customer.orders.new(order_params)
-  #   if@order.save
-  #     cart_items.each do|cart|
-  #     order_item=OrderItem.new
-  #     order_item.item_id = cart.item_id
-  #     order_item.order_id = @order.id
-  #     order_item.order_quantity = cart.quantity
-  #     order_item.order_price = cart.item.price
-  #     order_item.save
-  #     end
-  #   redirect_to
-  #   cart_items.destroy_all
-  #   else
-  #     @order = Order.new(order_params)
-  #     render :new
-  #   end
-  # end
-  # def index
+  def create
+    @cart_items = current_customer.cart_items.all
+    @order = Order.new(order_params)
+    byebug
+    if@order.save
+      cart_items.each do|cart|
+      order_item=OrderItem.new
+      order_item.item_id = cart_item.item_id
+      order_item.order_id = @order.id
+      order_item.order_quantity = cart.quantity
+      order_item.order_price = cart.item.price
+      order_item.save
+      end
+    redirect_to
+    cart_items.destroy_all
+    else
+      @order = Order.new(order_params)
+      render :new
+    end
+  end
+  def index
 
-  #   #@order = Order.new
-  #   @orders = current_customer.orders
-  # end
+    #@order = Order.new
+    @orders = current_customer.orders
+  end
 
-  # def show
-  # @order=Order.find(params[:id])
-  # @order_item= @order.ordering_item
-  #   @order.shipping_cost = 800
-  #   @total_price = 0
-  #   @ordering_details.each do |ordering_detail|
-  #   @total_price += ordering_detail.item.add_tax_price*ordering_detail.amount
-  #   end
-  #   @order.total_payment = @total_price + @order.shipping_cost
-  # end
+  def show
+  @order=Order.find(params[:id])
+  @order_item= @order.ordering_item
+    @order.shipping_cost = 800
+    @total_price = 0
+    @ordering_details.each do |ordering_detail|
+    @total_price += ordering_detail.item.add_tax_price*ordering_detail.amount
+    end
+    @order.total_payment = @total_price + @order.shipping_cost
+  end
 
   def complete
   end
@@ -113,6 +110,6 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:pay_method, :address, :postcode,:address_name)
+    params.require(:order).permit(:pay_method, :address, :postcode,:address_name, :payment, :postage)
   end
 end

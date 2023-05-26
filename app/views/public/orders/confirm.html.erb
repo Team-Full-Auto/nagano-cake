@@ -26,7 +26,9 @@
               <!--商品合計金額の計算-->
               <% @total_price +=(cart_item.item.with_tax_price)*(cart_item.quantity) %>
             </tr>
+          <% end %>
         </tbody>
+      </table>
     </div>
     <div class="col-4">
       <table class="table table-hover table-inverse table-bordered">
@@ -44,27 +46,26 @@
         </tr>
       </table>
     </div>
-    <div class="col">
-       <table class="table table-hover table-inverse table-borderless">
-         <tr>
-           <th>お支払方法</th>
-           <td><%= @order.pay_method %></td>
-         </tr>
-         <tr>
-           <th>お届け先</th>
-           <td>〒<%= @order.postcode %></td>
-           <td><%= @order.address %></td>
-           <td><%= @order.address.name %></td>
-         </tr>
-        </table>
-    </div>
-    <div>
-      <%= form_with model: @order, url: orders_path, method: :post, do |f| %>
-        <%= f.hidden_field :pay_method, :value => @order.pay_method %>
-        <%= f.hidden_field :postcode => @order.postcode %>
-        <%= f.hidden_field :address, :value => @order.address %>
-        <%= f.hidden_field :address_name, :value => @order.address_name %>
-        <%= f.submit "注文を確定する" ,class: 'btn btn-success' %>
-    </div>
+  </div>
+  <div class="row" >
+    <table class="table table-hover table-inverse table-borderless">
+      <tr>
+        <th>お支払方法</th>
+        <td><%= @order.pay_method_i18n %></td>
+      </tr>
+      <tr>
+        <th>お届け先</th>
+        <td>〒<%= @order.postcode %><%= @order.address %><%= @order.address_name %></td>
+      </tr>
+    </table>
+  </div>
+  <div class="row">
+    <%= form_with model: @order, url: orders_path, method: :post do |f| %>
+      <%= f.hidden_field :pay_method, :value => @order.pay_method %>
+      <%= f.hidden_field :postcode => @order.postcode %>
+      <%= f.hidden_field :address, :value => @order.address %>
+      <%= f.hidden_field :address_name, :value => @order.address_name %>
+      <%= f.submit "注文を確定する" ,class: 'btn btn-success' %>
+    <% end %>
   </div>
 </div>
