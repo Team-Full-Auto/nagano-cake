@@ -50,8 +50,7 @@ class Public::OrdersController < ApplicationController
         @order_item.save
       end
 
-    redirect_to 
-    cart_items.destroy_all
+   
 
       @cart_items.destroy_all
       redirect_to orders_complete_path
@@ -67,43 +66,12 @@ class Public::OrdersController < ApplicationController
 
   def show
   @order=Order.find(params[:id])
-er.ordering_item
-    @order.shipping_cost = 800
-    @total_price = 0
-   #@order_item.each do |order_item|
-
-    #@total_price += cart_item.item.add_tex_price*cart_item.quantity
-    #end
-   # @order.total_payment = @total_price + @shipping_cost
-    @order.pay_method = params[:order][:payment_method]
-    if params[:order][:select_number] == "0".to_s
-     @order.post_code = current_customer.post_code
-       @order.address = current_customer.address
-       @order.name = current_customer.first_name + current_customer.last_name
-    elsif params[:order][:select_number] == "1".to_s
-        address = current_customer.addresses.find(params[:order][:address_id].to_i)#[:order][:address_id]の文字列を数字に変えるto_iを記述
-
-        @order.post_code = address.post_code#上段で持ってきたaddressのidのpostal_codeを右辺に送る。
-        @order.address = address.address
-        @order.name = address.name
-    elsif params[:order][:select_number] == "2".to_s
-
-        @order.post_code = params[:order][:postal_code]#フォームで入力したデータをparamsが持ってきて[:order][:postal_code]で郵便番号を呼び出す。
-        @order.address = params[:order][:address]
-        @order.name = params[:order][:name]
-    @ordering_details.each do |ordering_detail|
-    @total_price += ordering_detail.item.add_tax_price*ordering_detail.amount
-    end
-    @order.total_payment = @total_price + @order.shipping_cost
-    end
-
   @order_item= @order.order_items
   @order.postage = 800
   @total_price = 0
   @order_item.each do |ordering_detail|
     @total_price += ordering_detail.item.with_tax_price*ordering_detail.quantity
   end
-
   end
 
   def complete
