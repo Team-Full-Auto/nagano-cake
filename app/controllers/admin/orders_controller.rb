@@ -8,11 +8,9 @@ class Admin::OrdersController < ApplicationController
 
   def update
     @order=Order.find(params[:id])
-    @order_item =OrderItem.where(order_id: params[:id])
-    @order.update(order_params)
-
-    if @order.status == "confirm_payment"
-      @order_item.update_all(making_status: 1)
+    @order_items =OrderItem.where(order_id: params[:id])
+    if @order.update(order_params)
+      @order_items.update_all(crreate_status: 1) if @order.status == "before_payment"
     end
 
     redirect_to admin_order_path(@order), notice: 'Successfully updated order status'
