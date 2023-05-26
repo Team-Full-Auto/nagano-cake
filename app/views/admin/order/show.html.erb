@@ -1,8 +1,9 @@
+<%= render "layouts/header" %>
+<div class="container px-5">
+  <h2>注文履歴詳細</h2>
+  <div class="row">
+    <div class='mx-auto'>
 
-<div class="container">
-<div class="row">
-<div class='mx-auto'>
-<p>注文履歴詳細</p>
 <table>
      <% @orders.each do |order| %>
 <tr> <span class="border-0">注文日</span></th>
