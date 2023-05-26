@@ -23,15 +23,11 @@
           <tr>
             <th>注文ステータス</th>
             <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
-<<<<<<< HEAD
-              <td><%= f.select :status, Order.statuses.keys.map {|k| [t("enums.order.category.#{k}"), k]} %></td>
-=======
               <td>
                 <%= f.select :status, Order.statuses_i18n.invert, {} %>
                 <%= f.hidden_field :id, :value => @order.id %>
                 <%= f.submit "更新" %>
               </td>
->>>>>>> origin/develop
             <% end %>
           </tr>
         </table>
