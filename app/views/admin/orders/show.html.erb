@@ -1,0 +1,55 @@
+<%= render "layouts/header" %>
+<div class="container px-5">
+  <h2>注文履歴詳細</h2>
+  <div class="row">
+    <div class='mx-auto'>
+        <table>
+          <tr>
+            <th>購入者</th>
+            <td><%= @order.customer.family_name %><%= @order.customer.last_name %></td>
+          </tr>
+          <tr>
+            <th>注文日</th>
+            <td><%= @order.created_at.strftime('%Y/%m/%d')%></td>
+          </tr>
+          <tr>
+            <th>配送先</th>
+            <td><%= @order.postcode %><%= @order.address %><%= @order.address_name %></td>
+          </tr>
+          <tr>
+            <th>支払方法</th>
+            <td><%= @order.pay_method_i18n %></td>
+          </tr>
+          <tr>
+            <th>注文ステータス</th>
+            <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
+              <td><%= f.select :status, options_from_collection_for_select(enum.order, statuses, :status, :status_i18n) %></td>
+            <% end %>
+          </tr>
+        </table>
+
+        <table>
+          <thead>
+            <th>商品名</th>
+            <th>単価</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>制作ステータス</th>
+          </thead>
+          <tbody>
+            <% @order_items.each do |order| %>
+            <td>
+              <%= order.item.name %>
+            </td>
+            <td><%= order.item.price %></td>
+            <td><%= order.quantity %></td>
+            <td><%= (order.item.with_tax_price)*(order.quantity) %></td>
+            <%= form_with model: order, url: admin_order_item_path(order.id) do |f| %>
+              <td><%= f.select :select_address, options_from_collection_for_select(ShippingAddress.all, :id, :address_display) %></td>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>
