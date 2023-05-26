@@ -3,31 +3,53 @@
   <h2>注文履歴詳細</h2>
   <div class="row">
     <div class='mx-auto'>
+        <table>
+          <tr>
+            <th>購入者</th>
+            <td><%= @order.customer.family_name %><%= @order.customer.last_name %></td>
+          </tr>
+          <tr>
+            <th>注文日</th>
+            <td><%= @order.created_at.strftime('%Y/%m/%d')%></td>
+          </tr>
+          <tr>
+            <th>配送先</th>
+            <td><%= @order.postcode %><%= @order.address %><%= @order.address_name %></td>
+          </tr>
+          <tr>
+            <th>支払方法</th>
+            <td><%= @order.pay_method_i18n %></td>
+          </tr>
+          <tr>
+            <th>注文ステータス</th>
+            <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
+              <td><%= f.select :status, (enum.order, statuses, :status, :status_i18n) %></td>
+            <% end %>
+          </tr>
+        </table>
 
-<table>
-     <% @orders.each do |order| %>
-<tr> <span class="border-0">注文日</span></th>
-    <th><%= order.created %> </th>
-<tr> <span class="border-0">配送先</span></th>
-   <th>   <%= order.shipping_address %></th>
-      <th> <span class="border-0">支払金額</span></th>
-       <th> <%= order.pay_method %></th>
-
-          <%= f.label :status, "注文ステータス" %>
-<% f.collection_select (:order_id, current_customer.addresses, :status) %>
-
-
-<th> <span class="border-0">商品名</span></th>
-<th><span class="border-0">単価</span></th>
-<th><span class="border-0">数量</span></th>
-<th><span class="border-0">小計</span></th>
-<th><span class="border-0">制作ステータス</span></th>
-<% @orders.each do |order| %>
-<td><th><span class="border-0"><%= @item.name %></span></th>　</td>
-<th> <span class="border-0"><%= f.hidden_field :total_price, value: @total %></th>
-<th> <span class="border-0"><%= @cart_item.quantity %> </th>
-<th> <span class="border-0">(cart.item.price*cart.quantity).to_s(:delimited) %> <!></th>}
-<% f.collection_select(:orders_id,current_customer.shipping_addresses, :id, :create_status) %>
-</div>
-</div>
+        <table>
+          <thead>
+            <th>商品名</th>
+            <th>単価</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>制作ステータス</th>
+          </thead>
+          <tbody>
+            <% @order_items.each do |order| %>
+            <td>
+              <%= order.item.name %>
+            </td>
+            <td><%= order.item.price %></td>
+            <td><%= order.quantity %></td>
+            <td><%= (order.item.with_tax_price)*(order.quantity) %></td>
+            <%= form_with model: order, url: admin_order_item_path(order.id) do |f| %>
+              <td><%= f.select :select_address, options_from_collection_for_select(ShippingAddress.all, :id, :address_display) %></td>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+  </div>
 </div>

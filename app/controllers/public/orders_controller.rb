@@ -30,15 +30,15 @@ class Public::OrdersController < ApplicationController
       # 新しいお届け先が選択された場合
       elsif params[:order][:select_address] = "3"
     # どのお届け先も選択されていないとき
-      else 
+      else
         flash[:notice] = "お届け先を選択してください"
         redirect_back(fallback_location: root_path)
       end
     end
   end
-  
+
   def create
-    @cart_items = current_customer.cart_items.all
+    @cart_items = current_customer.cart_items
     @order = Order.new(order_params)
     if @order.save
       @cart_items.each do |cart|
@@ -60,6 +60,7 @@ class Public::OrdersController < ApplicationController
     render :new
     end
   end
+
   def index
     @orders = current_customer.orders
   end
