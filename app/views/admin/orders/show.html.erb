@@ -4,16 +4,30 @@
   <div class="row">
     <div class='mx-auto'>
         <table>
-          <tr><span class="border-0">注文日</span></th>
-          <th><%= @order.created_at.strftime('%Y/%m/%d')%> </th>
-          <tr><span class="border-0">配送先</span></th>
-          <th><%= @order.postcode %><%= @order.address %><%= @order.address_name %></th>
-          <th><span class="border-0">支払金額</span></th>
-          <th><%= @order.pay_method %></th>
-          <%= label :status, "注文ステータス" %>
-          <%#= collection_select :order_id, @order.address, :status %>
+          <tr>
+            <th>購入者</th>
+            <td><%= @order.customer.family_name %><%= @order.customer.last_name %></td>
+          </tr>
+          <tr>
+            <th>注文日</th>
+            <td><%= @order.created_at.strftime('%Y/%m/%d')%></td>
+          </tr>
+          <tr>
+            <th>配送先</th>
+            <td><%= @order.postcode %><%= @order.address %><%= @order.address_name %></td>
+          </tr>
+          <tr>
+            <th>支払方法</th>
+            <td><%= @order.pay_method_i18n %></td>
+          </tr>
+          <tr>
+            <th>注文ステータス</th>
+            <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
+              <td><%= f.select :status, options_from_collection_for_select(enum.order, statuses, :status, :status_i18n) %></td>
+            <% end %>
+          </tr>
         </table>
-      <% @order_items.each do |order| %>
+
         <table>
           <thead>
             <th>商品名</th>
@@ -23,6 +37,7 @@
             <th>制作ステータス</th>
           </thead>
           <tbody>
+            <% @order_items.each do |order| %>
             <td>
               <%= order.item.name %>
             </td>
