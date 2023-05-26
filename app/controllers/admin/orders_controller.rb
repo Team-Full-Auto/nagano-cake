@@ -1,25 +1,26 @@
 class Admin::OrdersController < ApplicationController
-  before_action :authenticate_customer!
+  before_action :authenticate_admin!
 
+  def show
+    @order = Order.find(params[:id])
+    @order_items = @order.order_items
+  end
 
-def show
-  @order = current_customer.orders.find(params[:id])
-end
-def update
+  def update
     @order=Order.find(params[:id])
     @order_item =OrderItem.where(order_id: params[:id])
-     @order.update(order_params)
-     
-   
-      if @order.status == "confirm_payment"
-         @order_item.update_all(making_status: 1)
-      end
-    
+    @order.update(order_params)
+
+    if @order.status == "confirm_payment"
+      @order_item.update_all(making_status: 1)
+    end
 
     redirect_to admin_order_path(@order), notice: 'Successfully updated order status'
-end
+  end
+
   private
-def order_params
-  params.require(:order).permit(:status)
-end
+
+  def order_params
+    params.require(:order).permit(:status)
+  end
 end
