@@ -68,25 +68,25 @@ class Public::OrdersController < ApplicationController
 #   end
 
   def create
-    @cart_items = current_customer.cart_items.all
+    @cart_items = current_customer.cart_items
     @order = Order.new(order_params)
-    byebug
-    if@order.save
-      cart_items.each do|cart|
-      order_item=OrderItem.new
-      order_item.item_id = cart_item.item_id
-      order_item.order_id = @order.id
-      order_item.order_quantity = cart.quantity
-      order_item.order_price = cart.item.price
-      order_item.save
-      end
-    redirect_to
-    cart_items.destroy_all
+    if @order.save
+      # cart_items.each do|cart|
+      # order_item=OrderItem.new
+      # order_item.item_id = cart_item.item_id
+      # order_item.order_id = @order.id
+      # order_item.order_quantity = cart.quantity
+      # order_item.order_price = cart.item.price
+      # order_item.save
+      # end
+      @cart_items.destroy_all
+    redirect_to　orders_complete_path
     else
       @order = Order.new(order_params)
       render :new
     end
   end
+
   def index
 
     #@order = Order.new
@@ -110,6 +110,6 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:pay_method, :address, :postcode,:address_name, :payment, :postage)
+    params.require(:order).permit(:pay_method, :address, :postcode, :address_name, :payment, :postage)
   end
 end
