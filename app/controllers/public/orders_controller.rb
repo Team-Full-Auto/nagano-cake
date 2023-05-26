@@ -40,7 +40,7 @@ class Public::OrdersController < ApplicationController
       order_item.order_price = cart.item.price
       order_item.save
       end
-    redirect_to
+    redirect_to 
     cart_items.destroy_all
     else
       @order = Order.new(order_params)
@@ -61,7 +61,7 @@ class Public::OrdersController < ApplicationController
     #@total_price += cart_item.item.add_tex_price*cart_item.quantity
     #end
    # @order.total_payment = @total_price + @shipping_cost
-    @order.payment_method = params[:order][:payment_method]
+    @order.pay_method = params[:order][:payment_method]
     if params[:order][:select_number] == "0".to_s
      @order.post_code = current_customer.post_code
        @order.address = current_customer.address

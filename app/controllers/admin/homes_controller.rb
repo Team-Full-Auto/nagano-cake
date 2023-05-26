@@ -7,4 +7,5 @@ class Admin::HomesController < ApplicationController
   
   def top_params
     params.require(:order).permit(:name,:detail,:price,:image,:genre,:page)
+ end
 end
