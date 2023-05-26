@@ -61,10 +61,12 @@
   </div>
   <div class="row">
     <%= form_with model: @order, url: orders_path, method: :post do |f| %>
+      <%= f.hidden_field :customer_id, :value => @customer.id %>
       <%= f.hidden_field :pay_method, :value => @order.pay_method %>
-      <%= f.hidden_field :postcode => @order.postcode %>
+      <%= f.hidden_field :postcode, :value => @order.postcode %>
       <%= f.hidden_field :address, :value => @order.address %>
       <%= f.hidden_field :address_name, :value => @order.address_name %>
+      <%= f.hidden_field :payment, :value => (@total_price + @order.postage) %>
       <%= f.submit "注文を確定する" ,class: 'btn btn-success' %>
     <% end %>
   </div>
