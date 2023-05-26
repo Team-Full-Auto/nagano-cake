@@ -30,27 +30,6 @@
         </tbody>
       </table>
     </div>
-<<<<<<< HEAD
-
-<p>ご請求金額</p>
-<%= @order.pay_method %> <!-- お買い物の合計金額 -->
- <tr><th>支払方法</th><td class="col-5"><%= @order.pay_method %></td></tr>
-<p>お届け先</p>
-<%= @order.postcode %>
-              <%= @order.postcode %>
-                <%= @order.address %>
-                <%= @order.address_name %>
-
-
-<%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
-
-  <%= f.hidden_field :name %>
-  <%= f.hidden_field :address %>
-  <%= f.hidden_field :total_price, value: @total %>
-  <%= f.submit "注文を確定する" ,class: 'btn btn-success' %>
-<% end %>
-</div>
-=======
     <div class="col-4">
       <table class="table table-hover table-inverse table-bordered">
         <tr>
@@ -89,5 +68,4 @@
       <%= f.submit "注文を確定する" ,class: 'btn btn-success' %>
     <% end %>
   </div>
->>>>>>> origin/develop
 </div>

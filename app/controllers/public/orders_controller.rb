@@ -124,7 +124,7 @@ class Public::OrdersController < ApplicationController
     end
     @order.total_payment = @total_price + @order.shipping_cost
     end
- end
+  end
 
   def complete
   end
