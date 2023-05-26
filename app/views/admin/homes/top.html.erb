@@ -1,29 +1,38 @@
 <%= render "layouts/header" %>
-<div class="container px-5">
+<div class="container px-5 mt-5">
   <h2>注文履歴一覧</h2>
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <% @orders.each do |order| %>
-        <table class="table table-hover table-inverse table-bordered">
-          <thead>
+    <div class="col mx-auto mt-5">
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th>購入日時</th>
+            <th>購入者</th>
+            <th>注文個数</th>
+            <th>注文ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
             <tr>
-              <th>購入日時</th>
-              <th>購入者</th>
-              <th>注文個数</th>
-              <th>注文ステータス</th>
+              <td>
+                <%= link_to admin_order_path(order) do %>
+                  <%= order.created_at.strftime('%Y/%m/%d') %>
+                <% end %>
+              </td>
+              <td><%= order.customer.family_name%><%= order.customer.last_name%></td>
+              <td>
+                <% @total_quantity = 0 %>
+                <% order.order_items.all.each do |order_item|  %>
+                    <% @quantity = order_item.quantity  %>
+                    <% @total_quantity += @quantity  %>
+                  <% end %>
+                  <%= @total_quantity %></td>
+              <td><%= order.status_i18n %></td>
             </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><%= order.created_at %></td>
-              <td><%= order.customer.name %></td>
-              <td><%= %></td>
-              <td><%= order.status %></td>
-            </tr>
-          </tbody>
-        </table>
-      <% end %>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
-  
 </div>
