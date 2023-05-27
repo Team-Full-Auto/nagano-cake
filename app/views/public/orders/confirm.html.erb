@@ -19,10 +19,10 @@
                 <%= image_tag cart_item.item.image,size: "150x100" %>
                 <span><%= cart_item.item.name %></span>
               </td>
-              <td><%= cart_item.item.with_tax_price %></td>
+              <td><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
               <td><%= cart_item.quantity %></td>
               <!--小計の計算-->
-              <td><%= (cart_item.item.with_tax_price)*(cart_item.quantity) %></td>
+              <td><%= ((cart_item.item.with_tax_price)*(cart_item.quantity)).to_s(:delimited) %></td>
               <!--商品合計金額の計算-->
               <% @total_price +=(cart_item.item.with_tax_price)*(cart_item.quantity) %>
             </tr>
@@ -38,11 +38,11 @@
         </tr>
         <tr>
           <th>商品合計</th>
-          <td><%= @total_price %></td>
+          <td><%= @total_price.to_s(:delimited) %></td>
         </tr>
         <tr>
           <th>請求金額</th>
-          <td><%= @total_price + @order.postage %></td>
+          <td><%= (@total_price + @order.postage).to_s(:delimited) %></td>
         </tr>
       </table>
     </div>
