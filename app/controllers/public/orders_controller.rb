@@ -12,7 +12,6 @@ class Public::OrdersController < ApplicationController
     @total_price = 0
     @cart_items = current_customer.cart_items
     @order = Order.new(order_params)
-    
     if order_params[:pay_method].nil?
       flash[:notice] = "支払い方法を選択してください"
       redirect_back(fallback_location: root_path)
@@ -31,8 +30,6 @@ class Public::OrdersController < ApplicationController
       # 新しいお届け先が選択された場合
       elsif params[:order][:select_address] === "2"
     # どのお届け先も選択されていないとき
-      elsif params[:order][:select_address] === ""
-    # 　どのお届け先も選択されていないとき
       else
         flash[:notice] = "お届け先を選択してください"
         redirect_back(fallback_location: root_path)
