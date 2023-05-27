@@ -20,16 +20,16 @@
           <th>支払方法</th>
           <td><%= @order.pay_method_i18n %></td>
         </tr>
+        <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
         <tr>
           <th>注文ステータス</th>
-          <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
             <td>
               <%= f.select :status, Order.statuses_i18n.invert %>
               <%= f.hidden_field :id, :value => @order.id %>
               <%= f.submit "更新", class: "btn btn-success" %>
             </td>
-          <% end %>
         </tr>
+        <% end %>
       </table>
     </div>
   </div>

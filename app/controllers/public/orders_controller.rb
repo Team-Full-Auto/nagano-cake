@@ -23,7 +23,7 @@ class Public::OrdersController < ApplicationController
         @order.address_name = @customer.family_name + @customer.last_name
     # 登録先住所が選択された場合
       elsif params[:order][:select_address] === "1"
-        @address = ShippingAddress.find_by(params[:order][:shipping_address_id])
+        @address = ShippingAddress.find(params[:order][:address_id])
         @order.postcode = @address.postcode
         @order.address = @address.address
         @order.address_name = @address.name
@@ -50,12 +50,8 @@ class Public::OrdersController < ApplicationController
         @order_item.buy_price = cart.item.price
         @order_item.save
       end
-
-
-
       @cart_items.destroy_all
       redirect_to orders_complete_path
-
     else
     @order = Order.new(order_params)
     render :new
