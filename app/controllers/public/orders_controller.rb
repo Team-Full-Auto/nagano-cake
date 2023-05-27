@@ -12,23 +12,24 @@ class Public::OrdersController < ApplicationController
     @cart_items = current_customer.cart_items
     @customer = current_customer
     @order = Order.new(order_params)
+    
     if order_params[:pay_method].nil?
       flash[:notice] = "支払い方法を選択してください"
       redirect_back(fallback_location: root_path)
     else
     # 自身の住所が選択された場合
-      if params[:order][:select_address] = "1"
+      if params[:order][:select_address] === "0"
         @order.postcode = @customer.postcode
         @order.address = @customer.address
         @order.address_name = @customer.family_name + @customer.last_name
     # 登録先住所が選択された場合
-      elsif params[:order][:select_address] = "2"
+      elsif params[:order][:select_address] === "1"
         @address = ShippingAddress.find_by(params[:order][:shipping_address_id])
         @order.postcode = @address.postcode
         @order.address = @address.address
         @order.address_name = @address.name
       # 新しいお届け先が選択された場合
-      elsif params[:order][:select_address] = "3"
+      elsif params[:order][:select_address] === "2"
     # どのお届け先も選択されていないとき
       else
         flash[:notice] = "お届け先を選択してください"
