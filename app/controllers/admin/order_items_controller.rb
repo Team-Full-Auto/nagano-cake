@@ -1,9 +1,9 @@
 class Admin::OrderItemsController < ApplicationController
    before_action :authenticate_admin!
-   
+
 def update
-  @order =Order.find(params[:order_id])
   @order_item = OrderItem.find(params[:id])
+  @order = Order.find(@order_item.order_id)
   @order_items = @order.order_items.all
   is_updated = true
   if @order_item.update(order_item_params)
@@ -15,9 +15,9 @@ def update
         is_updated = false
       end
     end
-   @order.update(status: 3) if is_updated 
+   @order.update(status: 3) if is_updated
   end
-  redirect_to admin_order_path(@order)
+  redirect_to admin_order_path(@order.id)
 end
 
 

@@ -21,20 +21,20 @@
             <tr>
               <td>
                 <%= f.label :select_address_1, "ご自身の住所"%>
-                <%= f.radio_button :select_address, 1 %>
+                <%= f.radio_button :select_address, "1" %>
                 <%= current_customer.address %></td>
             </tr>
             <tr>
               <td>
                 <%= f.label :select_address_2, "登録先の住所" %>
-                <%= f.radio_button :select_address, 2 %>
+                <%= f.radio_button :select_address, "2" %>
                 <%= f.select :select_address, options_from_collection_for_select(ShippingAddress.all, :id, :address_display) %>
               </td>
             </tr>
             <tr>
               <td>
                 <%= f.label :select_address_3, "新しいお届け先" %>
-                <%= f.radio_button :select_address, 3 %>
+                <%= f.radio_button :select_address, "3" %>
               </td>
             </tr>
             <tr>
