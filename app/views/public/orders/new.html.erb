@@ -9,6 +9,7 @@
             <tr>
               <th>支払い方法</th>
               <td>
+                
                 <%= f.radio_button :pay_method,Order.pay_methods.key(0) %>
                 <%= f.label :pay_method, Order.pay_methods_i18n[:credit_card] %>
               </td>
@@ -17,24 +18,26 @@
                 <%= f.label :pay_method, Order.pay_methods_i18n[:transfer] %>
               </td>
             </tr>
+            
             <th>お届け先</th>
             <tr>
               <td>
-                <%= f.label :select_address_1, "ご自身の住所"%>
-                <%= f.radio_button :select_address, 1 %>
+                
+                <%= f.label :select_address_0, "ご自身の住所"%>
+                <%= f.radio_button :select_address, 0 %>
                 <%= current_customer.address %></td>
             </tr>
             <tr>
               <td>
-                <%= f.label :select_address_2, "登録先の住所" %>
-                <%= f.radio_button :select_address, 2 %>
+                <%= f.label :select_address_1, "登録先の住所" %>
+                <%= f.radio_button :select_address, 1 %>
                 <%= f.select :select_address, options_from_collection_for_select(ShippingAddress.all, :id, :address_display) %>
               </td>
             </tr>
             <tr>
               <td>
-                <%= f.label :select_address_3, "新しいお届け先" %>
-                <%= f.radio_button :select_address, 3 %>
+                <%= f.label :select_address_2, "新しいお届け先" %>
+                <%= f.radio_button :select_address, 2 %>
               </td>
             </tr>
             <tr>
