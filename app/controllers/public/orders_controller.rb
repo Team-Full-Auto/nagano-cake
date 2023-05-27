@@ -18,7 +18,7 @@ class Public::OrdersController < ApplicationController
       redirect_back(fallback_location: root_path)
     else
     # 自身の住所が選択された場合
-      if params[:order][:select_address] === "0"
+      if params[:order][:select_address] === "0" #この場合は===になる
         @order.postcode = @customer.postcode
         @order.address = @customer.address
         @order.address_name = @customer.family_name + @customer.last_name
