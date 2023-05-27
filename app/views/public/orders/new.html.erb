@@ -4,12 +4,12 @@
     <div class='mx-auto'>
       <h4>注文情報入力</h4>
       <p><%= flash[:notice] %></p>
-        <%= form_with model: @order ,url: orders_confirm_path do |f| %>
+        <%= form_with model: @order, url: orders_confirm_path do |f| %>
           <table class="table table-hover table-inverse">
             <tr>
               <th>支払い方法</th>
               <td>
-                
+
                 <%= f.radio_button :pay_method,Order.pay_methods.key(0) %>
                 <%= f.label :pay_method, Order.pay_methods_i18n[:credit_card] %>
               </td>
@@ -18,7 +18,7 @@
                 <%= f.label :pay_method, Order.pay_methods_i18n[:transfer] %>
               </td>
             </tr>
-            
+
             <th>お届け先</th>
             <tr>
               <td>
@@ -31,7 +31,7 @@
               <td>
                 <%= f.label :select_address_1, "登録先の住所" %>
                 <%= f.radio_button :select_address, 1 %>
-                <%= f.select :select_address, options_from_collection_for_select(ShippingAddress.all, :id, :address_display) %>
+                <%= f.select :address_id, options_from_collection_for_select(current_customer.shipping_addresses, :id, :address_display) %>
               </td>
             </tr>
             <tr>

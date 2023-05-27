@@ -21,7 +21,7 @@
             <td><%= order.postcode %><%= order.address %><%= order.address_name %></td>
             <td>
             <% order.order_items.all.each do |o| %>
-              <%= o.item.name %>q
+              <%= o.item.name %>
             <% end %>
             </td>
             <td><%= order.payment.to_s(:delimited) %></td>
