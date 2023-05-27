@@ -20,8 +20,8 @@
             <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
             <td><%= order.postcode %><%= order.address %><%= order.address_name %></td>
             <td>
-            <% OrderItem.all.each do |o| %>
-              <%= o.item.name %>
+            <% order.order_items.all.each do |o| %>
+              <%= o.item.name %>q
             <% end %>
             </td>
             <td><%= order.payment.to_s(:delimited) %></td>

@@ -8,9 +8,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
+    @customer = current_customer
     @total_price = 0
     @cart_items = current_customer.cart_items
-    @customer = current_customer
     @order = Order.new(order_params)
     
     if order_params[:pay_method].nil?
@@ -31,12 +31,15 @@ class Public::OrdersController < ApplicationController
       # 新しいお届け先が選択された場合
       elsif params[:order][:select_address] === "2"
     # どのお届け先も選択されていないとき
+      elsif params[:order][:select_address] === ""
+    # 　どのお届け先も選択されていないとき
       else
         flash[:notice] = "お届け先を選択してください"
         redirect_back(fallback_location: root_path)
       end
     end
   end
+
 
   def create
     @cart_items = current_customer.cart_items
@@ -67,13 +70,13 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-  @order=Order.find(params[:id])
-  @order_item= @order.order_items
-  @order.postage = 800
-  @total_price = 0
-  @order_item.each do |ordering_detail|
-    @total_price += ordering_detail.item.with_tax_price*ordering_detail.quantity
-  end
+    @order=Order.find(params[:id])
+    @order_item= @order.order_items
+    @order.postage = 800
+    @total_price = 0
+    @order_item.each do |ordering_detail|
+      @total_price += ordering_detail.item.with_tax_price*ordering_detail.quantity
+    end
   end
 
   def complete

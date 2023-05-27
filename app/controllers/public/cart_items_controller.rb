@@ -37,7 +37,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy
-    @cart_item = CartIterm.find_by(id: params[:id], customer_id: current_customer.id)
+    @cart_item = CartItem.find_by(id: params[:id], customer_id: current_customer.id)
     @cart_item.destroy
     flash[:notice] = "カートから削除しました"
     redirect_to cart_items_path

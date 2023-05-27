@@ -9,9 +9,9 @@ class Customer < ApplicationRecord
   has_many :shipping_addresses, dependent: :destroy
 
   validates :email, uniqueness: true
-  validates :phone_number, uniqueness: true
-  validates :address, uniqueness: true
-  validates :postcode, uniqueness: true
+  # validates :phone_number, uniqueness: true
+  # validates :address, uniqueness: true
+  # validates :postcode, uniqueness: true
 
   def active_for_authentication?
     super && (is_deleted == false)
