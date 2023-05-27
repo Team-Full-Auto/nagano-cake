@@ -13,7 +13,7 @@
         <h3><%= @item.detail %></h3>
       </di>
       <div class="show-group mt-4">
-        <h2>￥<%= @item.with_tax_price %></h2><h4>(税込み)</h4>
+        <h2>￥<%= @item.with_tax_price.to_s(:delimited) %></h2><h4>(税込み)</h4>
       </div>
       <%= form_with(model: @cart_item, url: cart_items_path, method: :post) do |f| %>
         <div class="show-group mt-4">
