@@ -43,7 +43,7 @@
 * Ruby 3.1.2　rails 6.1.7.3
 
 # インストール
-$ git clone git@github.com:chibaragi/nagano-cake.git
+$ git clone git@github.com:Team-Full-Auto/nagano-cake.git
 $ rails db:migrate
 $ bundle install
 
