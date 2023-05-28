@@ -13,8 +13,8 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-
       <ul class="navbar-nav row">
+        <!--顧客がログインしていた場合-->
         <% if customer_signed_in? %>
           <li class="nav-item">
             <%= link_to customer_path(current_customer), class: "nav-link text-dark" do%>
@@ -41,6 +41,7 @@
             <% end %>
           </li>
         <% elsif %>
+        <!--管理者がログインしていた場合-->
           <% if admin_signed_in? %>
             <li class="nav-item">
               <%= link_to admin_items_path, class: "nav-link text-dark" do %>
@@ -74,6 +75,7 @@
             </li>
           <% end %>
         <% else %>
+        <!--ログインしていない場合-->
           <li class="nav-item">
             <%= link_to about_path, class: "nav-link text-dark" do %>
               <i class="fas fa-info-circle fa-lg"></i>
