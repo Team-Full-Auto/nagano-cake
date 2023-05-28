@@ -22,31 +22,28 @@
 
 * お客様からの注文の管理、配送までの管理が可能
 
+* 退会済みのユーザー情報も確認可能 
+
 
 # 機能
 * デバイスを使用したログイン機能
 
 * gemを使用せず顧客側と管理者側の実装
 
-* enumの実装
+* enumを使用したステータス管理の実装
 
-* kaminariの実装
+* kaminariを使用したページネーションの実装
 
-* bootstrap の実装
-
-# 
+* bootstrapを使用したレイアウトの実装
 
 # 使い方
-会員側、管理者側ログインはメールアドレスを
-
-会員の場合は新規作成を行い好きなアカウント作成して利用可能
+新規作成を行い好きなアカウント作成して利用可能
 
 # バージョン
 * Ruby 3.1.2　rails 6.1.7.3
 
 # インストール
 $ git clone git@github.com:chibaragi/nagano-cake.git
-
 $ rails db:migrate
 $ bundle install
 
