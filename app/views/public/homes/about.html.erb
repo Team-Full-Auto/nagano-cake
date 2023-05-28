@@ -1,9 +1,21 @@
 <%= render "layouts/header", customer: @customer %>
-<h1>About</h1>
-<p>ながのCAKEは全国発送可能なケーキ屋さんです。</p>
-<p>お子様からお年寄りの方までお召し上がりいただけるよう、</p><br>
-<p>さまざまなバリエーションを用意しております。</p>
-<p>また、全国へ発送可能ですので「いつ」でも「どこ」でもご注文いただけます</p>
-<p>ぜひ、ご注文ください。</p>
+<div class="container px-5 mt-5">
+  <h1 class="text-center">About</h1>
+  <div class="row mx-auto mt-5">
+    <div class="col">
+      <p class="text-center">
+      ながのCAKEは全国発送可能なケーキ屋さんです。</br>
+      お子様からお年寄りの方までお召し上がりいただけるよう、</br>
+      さまざまなバリエーションを用意しております。</br>
+      また、全国へ発送可能ですので「いつ」でも「どこ」でもご注文いただけます</br>
+      ぜひ、ご注文ください。
+      </p>
+    </div>
+  </div>
+  <div class="row mx-auto mt-3 mb-5">
 
-<div></div>
+    <%= image_tag 'about.jpg', size: "1040x400"%>
+  </div>
+</div>
+
+
